@@ -1,0 +1,38 @@
+"""
+Menggabungkan experiment_results/dashboard_data.json ke dalam
+dashboard_template.html sehingga menghasilkan 1 file HTML mandiri
+(dashboard_optimasi_gym.html) yang bisa langsung dibuka di browser --
+tanpa server, tanpa fetch, karena datanya sudah tertanam di dalam file.
+
+Jalankan setelah export_dashboard_data.py:
+    python export_dashboard_data.py
+    python build_dashboard.py
+"""
+
+import json
+from pathlib import Path
+
+DATA_JSON = Path("experiment_results") / "dashboard_data.json"
+TEMPLATE_HTML = Path("dashboard_template.html")
+CHARTJS_LIB = Path("vendor_chart.umd.min.js")   # library Chart.js (MIT license), ditanam langsung
+OUTPUT_HTML = Path("dashboard_optimasi_gym.html")
+
+with open(DATA_JSON, "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+with open(TEMPLATE_HTML, "r", encoding="utf-8") as f:
+    template = f.read()
+
+with open(CHARTJS_LIB, "r", encoding="utf-8") as f:
+    chartjs_code = f.read()
+
+# Chart.js DITANAM langsung ke dalam file (bukan <script src="https://cdn...">)
+# supaya dashboard tetap jalan walau dibuka tanpa internet atau di jaringan
+# yang memblokir CDN (mis. beberapa jaringan kampus/kantor).
+final_html = template.replace("__CHARTJS_LIB__", chartjs_code)
+final_html = final_html.replace("__DATA_JSON__", json.dumps(data))
+
+with open(OUTPUT_HTML, "w", encoding="utf-8") as f:
+    f.write(final_html)
+
+print(f"Dashboard berhasil dibuat: {OUTPUT_HTML}")

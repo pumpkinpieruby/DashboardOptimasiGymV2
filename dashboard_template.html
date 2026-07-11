@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<title>Dashboard Optimasi Penjadwalan Gym — Fuzzy Logic + PSO</title>
+<script>__CHARTJS_LIB__</script>
+<style>
+  /* ------------------------------------------------------------------ */
+  /* GAYA DASAR -- warna before/after SENGAJA disamakan dengan          */
+  /* before_after.png & occupancy_examples.png (terracotta / teal)      */
+  /* supaya dashboard ini & grafik statis untuk lampiran skripsi selaras */
+  /* ------------------------------------------------------------------ */
+  :root{
+    --bg:#f6f5f2; --card:#ffffff; --text:#242321; --muted:#7a756d; --border:#e8e4dc;
+    --before:#C2664B;   /* terracotta = kondisi SEBELUM (sama seperti .png) */
+    --after:#0D8C72;    /* teal       = kondisi SESUDAH (sama seperti .png) */
+    --accent:#1f6f5c;
+    --good:#0D8C72; --bad:#C2664B;
+    --tag-rendah:#e0f2f0; --tag-rendah-text:#0D8C72;
+    --tag-sedang:#fdf0dc; --tag-sedang-text:#b0752b;
+    --tag-tinggi:#fbe6e1; --tag-tinggi-text:#a8432a;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; padding:32px; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  h1{ font-size:22px; margin:0 0 4px; }
+  h2{ font-size:15px; margin:0 0 4px; }
+  .subtitle{ color:var(--muted); font-size:14px; margin:0 0 26px; }
+  .desc{ font-size:12.5px; color:var(--muted); margin:0 0 14px; }
+
+  .panel{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px 20px; }
+  .grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .grid-2{ display:grid; grid-template-columns:1.3fr 1fr; gap:14px; }
+  .section{ margin-bottom:22px; }
+  .section-title{ font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin:0 0 10px; font-weight:600; }
+
+  /* --- kartu KPI kecil (dataset umum) --- */
+  .stat-card{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 18px; }
+  .stat-label{ font-size:12.5px; color:var(--muted); margin-bottom:6px; }
+  .stat-value{ font-size:22px; font-weight:700; }
+
+  /* --- tab pemilih skenario --- */
+  .tabs{ display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+  .tab-btn{
+    border:1px solid var(--border); background:var(--card); color:var(--text);
+    padding:9px 16px; border-radius:999px; font-size:13px; cursor:pointer; font-weight:600;
+  }
+  .tab-btn.active{ background:var(--accent); border-color:var(--accent); color:#fff; }
+  .scenario-desc{ font-size:12.5px; color:var(--muted); margin-bottom:16px; }
+  .infeasible-note{
+    background:#fbe6e1; border:1px solid #f0c4b8; color:#8a3620; font-size:12.5px;
+    padding:10px 14px; border-radius:8px; margin-bottom:16px; line-height:1.5;
+  }
+
+  /* --- kartu KPI perbandingan sebelum/sesudah --- */
+  .kpi-card{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 18px; }
+  .kpi-label{ font-size:13px; color:var(--muted); margin-bottom:10px; }
+  .kpi-row{ display:flex; align-items:baseline; gap:8px; }
+  .kpi-before{ font-size:14px; color:var(--before); }
+  .kpi-arrow{ color:var(--muted); font-size:13px; }
+  .kpi-after{ font-size:22px; font-weight:700; color:var(--after); }
+  .kpi-std{ font-size:11px; color:var(--muted); }
+  .kpi-delta{ display:inline-block; margin-top:8px; padding:2px 8px; border-radius:999px; font-size:11.5px; font-weight:600; }
+  .delta-good{ background:#e0f2f0; color:var(--good); }
+  .delta-bad{ background:#fbe6e1; color:var(--bad); }
+
+  table{ width:100%; border-collapse:collapse; font-size:12.5px; }
+  th,td{ padding:6px 4px; text-align:center; border-bottom:1px solid var(--border); }
+  th{ color:var(--muted); font-weight:600; }
+  .tag{ display:inline-block; padding:2px 8px; border-radius:6px; font-weight:600; font-size:11px; }
+  .tag-rendah{ background:var(--tag-rendah); color:var(--tag-rendah-text); }
+  .tag-sedang{ background:var(--tag-sedang); color:var(--tag-sedang-text); }
+  .tag-tinggi{ background:var(--tag-tinggi); color:var(--tag-tinggi-text); }
+  .legend{ display:flex; gap:16px; font-size:12.5px; color:var(--muted); margin-top:10px; flex-wrap:wrap; }
+  .legend span{ display:inline-flex; align-items:center; gap:6px; }
+  .dot{ width:10px; height:10px; border-radius:2px; display:inline-block; }
+
+  /* --- rekomendasi --- */
+  .rec-item{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:8px 10px; border-radius:8px; margin-bottom:6px; font-size:12.5px;
+    border-left:4px solid var(--border); background:#faf9f6;
+  }
+  .rec-item .rec-hour{ font-weight:700; }
+  .rec-item .rec-delta{ color:var(--muted); }
+  .sev-3{ border-left-color:#a8432a; }
+  .sev-1{ border-left-color:#0D8C72; }
+  .status-badge{ display:inline-block; padding:2px 8px; border-radius:999px; font-size:11px; font-weight:600; }
+  .status-Kritis{ background:#fbe6e1; color:#a8432a; }
+  .status-Perlu-Perhatian{ background:#fdf0dc; color:#b0752b; }
+  .status-Kurang-Optimal{ background:#e0f2f0; color:#0D8C72; }
+  .status-Ideal{ background:#eef1ee; color:var(--muted); }
+
+  footer{ margin-top:8px; font-size:12px; color:var(--muted); line-height:1.7; }
+  footer b{ color:var(--text); }
+  footer code{ background:#efece5; padding:1px 5px; border-radius:4px; }
+
+  @media (max-width:900px){
+    .grid-4{ grid-template-columns:repeat(2,1fr); }
+    .grid-2{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <h1>Dashboard Optimasi Penjadwalan Fasilitas Gym</h1>
+  <p class="subtitle">Fuzzy Logic + Particle Swarm Optimization — dibangun dari paket <code>gym_scheduler</code></p>
+
+  <!-- ============ SECTION A: GAMBARAN DATASET ============ -->
+  <div class="section">
+    <p class="section-title">Gambaran Dataset Asli</p>
+    <div class="grid-4" id="datasetStats"></div>
+  </div>
+
+  <div class="section grid-2">
+    <div class="panel">
+      <h2>Kunjungan "Present" per Bulan (2024)</h2>
+      <p class="desc">Dari seluruh riwayat kehadiran pada dataset asli.</p>
+      <canvas id="monthlyChart" height="130"></canvas>
+    </div>
+    <div class="panel">
+      <h2>Komposisi Keanggotaan &amp; Jenis Latihan</h2>
+      <p class="desc">Jumlah baris data per kategori.</p>
+      <canvas id="compositionChart" height="150"></canvas>
+    </div>
+  </div>
+
+  <!-- ============ SECTION B: PEMILIH SKENARIO ============ -->
+  <div class="section">
+    <p class="section-title">Skenario Eksperimen (Bab III)</p>
+    <div class="tabs" id="scenarioTabs"></div>
+    <p class="scenario-desc" id="scenarioDesc"></p>
+    <div id="infeasibleNote"></div>
+  </div>
+
+  <!-- ============ SECTION C: KPI SEBELUM -> SESUDAH ============ -->
+  <div class="section grid-4" id="kpiGrid"></div>
+
+  <!-- ============ SECTION D: CHARTS ============ -->
+  <div class="section grid-2">
+    <div class="panel">
+      <h2>Okupansi per Slot Jam — Sebelum vs Sesudah</h2>
+      <p class="desc">1 pengulangan representatif. Garis putus-putus = kapasitas maksimum per slot.</p>
+      <canvas id="occupancyChart" height="130"></canvas>
+    </div>
+    <div class="panel">
+      <h2>Konvergensi PSO</h2>
+      <p class="desc">Nilai fitness gbest per iterasi (pengulangan representatif yang sama).</p>
+      <canvas id="convergenceChart" height="150"></canvas>
+    </div>
+  </div>
+
+  <!-- ============ SECTION E: TABEL FUZZY ============ -->
+  <div class="section panel">
+    <h2>Tingkat Kepadatan per Slot (Fuzzy Logic)</h2>
+    <p class="desc">Label = himpunan fuzzy dengan derajat keanggotaan tertinggi pada slot tsb (Rendah / Sedang / Tinggi).</p>
+    <table id="fuzzyTable"></table>
+    <div class="legend">
+      <span><span class="dot" style="background:#0D8C72"></span>Rendah</span>
+      <span><span class="dot" style="background:#b0752b"></span>Sedang</span>
+      <span><span class="dot" style="background:#a8432a"></span>Tinggi</span>
+    </div>
+  </div>
+
+  <!-- ============ SECTION F: REKOMENDASI ============ -->
+  <div class="section">
+    <p class="section-title">Rekomendasi Penjadwalan &amp; Utilisasi</p>
+    <div class="panel" style="margin-bottom:14px;">
+      <p id="recSummaryText" style="font-size:13.5px; line-height:1.6; margin:0;"></p>
+    </div>
+    <div class="grid-2">
+      <div class="panel">
+        <h2>Jam yang Disarankan Dikurangi Bebannya</h2>
+        <p class="desc">Slot dengan okupansi tertinggi pada kondisi sebelum optimasi.</p>
+        <div id="recReduceList"></div>
+      </div>
+      <div class="panel">
+        <h2>Jam yang Disarankan untuk Promosi / Diisi</h2>
+        <p class="desc">Slot dengan okupansi rendah (&lt; 30% kapasitas) -- berpotensi dioptimalkan.</p>
+        <div id="recPromoteList"></div>
+      </div>
+    </div>
+    <div class="panel" style="margin-top:14px;">
+      <h2>Status Tiap Jam Operasional</h2>
+      <p class="desc">Dihitung dari kondisi sebelum optimasi (representatif). Urutan prioritas: Kritis &gt; Perlu Perhatian &gt; Kurang Optimal &gt; Ideal.</p>
+      <table id="statusTable"></table>
+    </div>
+  </div>
+
+  <footer>
+    <b>Catatan metodologi:</b> Booking disimulasikan dari pola jam kunjungan nyata pada
+    <code>daily_gym_attendance_workout_data.csv</code> (lihat <code>gym_scheduler/data.py</code>).
+    Kondisi <b>Sebelum</b> = booking pada slot pilihan asli tanpa pengaturan. <b>Sesudah</b> = hasil
+    PSO yang memindah booking pada slot yang melebihi kapasitas ke slot lain, dipandu penalti
+    fuzzy "Tinggi" (lihat <code>gym_scheduler/pso.py</code> &amp; <code>fuzzy_logic.py</code>), lalu
+    diperbaiki agar hard constraint (mutual exclusion / kapasitas) benar-benar terpenuhi
+    (<code>repair_hard_constraint</code> di <code>scheduler.py</code>). Parameter PSO: w=<span id="wText"></span>,
+    c1=<span id="c1Text"></span>, c2=<span id="c2Text"></span>, partikel=<span id="swarmText"></span>,
+    iterasi=<span id="iterText"></span>. Kapasitas per slot=<span id="capText"></span> orang/jam (asumsi, lihat <code>config.py</code>).
+    Setiap skenario dijalankan <span id="repeatsText"></span>x pengulangan (<code>run_experiments.py</code>); kartu KPI
+    menampilkan rata-rata ± standar deviasi. Grafik statis untuk lampiran skripsi tersedia di folder
+    <code>experiment_results/*.png</code> (dihasilkan skrip yang sama). Seluruh kode model ada di folder
+    <code>gym_scheduler/</code> dan tidak diubah untuk membuat dashboard ini.
+  </footer>
+
+<script>
+/* ==========================================================================
+   DATA HASIL EKSPERIMEN (dari experiment_results/dashboard_data.json,
+   ditanam otomatis oleh build_dashboard.py -- lihat placeholder di bawah)
+   ========================================================================== */
+const DATA = __DATA_JSON__;
+const scenarioNames = Object.keys(DATA.scenarios);
+let activeScenario = scenarioNames[0];
+
+/* ==========================================================================
+   SECTION A -- Statistik umum dataset
+   ========================================================================== */
+const ds = DATA.dataset_summary;
+const statDefs = [
+  { label: "Total Baris Data", value: ds.total_records.toLocaleString("id-ID") },
+  { label: "Tingkat Kehadiran (Present)", value: ds.attendance_rate_pct + "%" },
+  { label: "Rata-rata Durasi Latihan", value: ds.avg_duration_minutes + " menit" },
+  { label: "Tipe Keanggotaan Terbanyak", value: `${ds.top_membership_type} (${ds.top_membership_count})` },
+];
+const statsGrid = document.getElementById("datasetStats");
+statDefs.forEach(s => {
+  const el = document.createElement("div");
+  el.className = "stat-card";
+  el.innerHTML = `<div class="stat-label">${s.label}</div><div class="stat-value">${s.value}</div>`;
+  statsGrid.appendChild(el);
+});
+
+// grafik tren kunjungan bulanan
+const months = Object.keys(ds.monthly_present_counts).sort();
+new Chart(document.getElementById("monthlyChart"), {
+  type: "line",
+  data: {
+    labels: months,
+    datasets: [{
+      label: "Kunjungan Present",
+      data: months.map(m => ds.monthly_present_counts[m]),
+      borderColor: "#1f6f5c",
+      backgroundColor: "rgba(31,111,92,0.08)",
+      fill: true, tension: 0.3, pointRadius: 2,
+    }],
+  },
+  options: { responsive:true, plugins:{ legend:{ display:false } },
+             scales:{ y:{ beginAtZero:true } } },
+});
+
+// grafik komposisi keanggotaan & jenis latihan (2 dataset dalam 1 bar chart horizontal)
+const membershipLabels = Object.keys(ds.membership_counts);
+const workoutLabels = Object.keys(ds.workout_type_counts);
+new Chart(document.getElementById("compositionChart"), {
+  type: "bar",
+  data: {
+    labels: [...membershipLabels, ...workoutLabels],
+    datasets: [{
+      label: "Jumlah baris data",
+      data: [...membershipLabels.map(l => ds.membership_counts[l]),
+             ...workoutLabels.map(l => ds.workout_type_counts[l])],
+      backgroundColor: [
+        ...membershipLabels.map(() => "#1f6f5c"),
+        ...workoutLabels.map(() => "#C2664B"),
+      ],
+      borderRadius: 3,
+    }],
+  },
+  options: {
+    indexAxis: "y",
+    responsive: true,
+    plugins: { legend: { display:false } },
+    scales: { x: { beginAtZero:true } },
+  },
+});
+
+/* ==========================================================================
+   SECTION B -- Tab pemilih skenario
+   ========================================================================== */
+const tabsEl = document.getElementById("scenarioTabs");
+scenarioNames.forEach(name => {
+  const btn = document.createElement("button");
+  btn.className = "tab-btn" + (name === activeScenario ? " active" : "");
+  btn.textContent = name.split(" (")[0];
+  btn.onclick = () => { activeScenario = name; render(); };
+  btn.dataset.name = name;
+  tabsEl.appendChild(btn);
+});
+
+/* ==========================================================================
+   Chart.js instances (dibuat sekali, di-update tiap ganti skenario)
+   ========================================================================== */
+let occupancyChart, convergenceChart;
+
+function initCharts(scenario) {
+  const hours = DATA.config.operating_hours.map(h => h.toString().padStart(2,"0") + ":00");
+
+  occupancyChart = new Chart(document.getElementById("occupancyChart"), {
+    type: "bar",
+    data: {
+      labels: hours,
+      datasets: [
+        { label: "Sebelum", data: scenario.demand_before, backgroundColor: "#C2664B", borderRadius: 3 },
+        { label: "Sesudah", data: scenario.demand_after, backgroundColor: "#0D8C72", borderRadius: 3 },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: "bottom" } },
+      scales: { y: { beginAtZero:true, title:{ display:true, text:"Jumlah booking" } } },
+    },
+    plugins: [{
+      id: "capacityLine",
+      afterDraw(chart) {
+        const { ctx, chartArea, scales } = chart;
+        const y = scales.y.getPixelForValue(DATA.config.capacity_per_slot);
+        ctx.save();
+        ctx.strokeStyle = "#a8432a";
+        ctx.setLineDash([6,4]);
+        ctx.beginPath(); ctx.moveTo(chartArea.left,y); ctx.lineTo(chartArea.right,y); ctx.stroke();
+        ctx.restore();
+      },
+    }],
+  });
+
+  convergenceChart = new Chart(document.getElementById("convergenceChart"), {
+    type: "line",
+    data: {
+      labels: scenario.convergence.map((_, i) => i),
+      datasets: [{
+        label: "Fitness (gbest)", data: scenario.convergence,
+        borderColor: "#1f6f5c", backgroundColor: "rgba(31,111,92,0.08)",
+        fill: true, tension: 0.25, pointRadius: 0,
+      }],
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display:false } },
+      scales: { x: { title:{ display:true, text:"Iterasi" } }, y: { title:{ display:true, text:"Fitness" } } },
+    },
+  });
+}
+
+function updateCharts(scenario) {
+  occupancyChart.data.datasets[0].data = scenario.demand_before;
+  occupancyChart.data.datasets[1].data = scenario.demand_after;
+  occupancyChart.update();
+
+  convergenceChart.data.labels = scenario.convergence.map((_, i) => i);
+  convergenceChart.data.datasets[0].data = scenario.convergence;
+  convergenceChart.update();
+}
+
+/* ==========================================================================
+   Render KPI + deskripsi skenario + tabel fuzzy + catch untuk skenario
+   yang secara struktural melebihi total kapasitas (demand > kapasitas x slot)
+   ========================================================================== */
+const kpiDefs = [
+  { beforeKey: "conflicts_before", afterKey: "conflicts_after", label: "Konflik Booking", unit: "", lowerIsBetter: true },
+  { beforeKey: "utilization_before", afterKey: "utilization_after", label: "Utilisasi Slot", unit: "%", lowerIsBetter: false },
+  { beforeKey: "empty_before", afterKey: "empty_after", label: "Slot Kosong", unit: "%", lowerIsBetter: true },
+  { beforeKey: "wait_before", afterKey: "wait_after", label: "Rata-rata Waktu Tunggu", unit: " menit", lowerIsBetter: true },
+];
+
+function render() {
+  // update tombol tab aktif
+  [...tabsEl.children].forEach(b => b.classList.toggle("active", b.dataset.name === activeScenario));
+
+  const scenario = DATA.scenarios[activeScenario];
+  const totalCapacity = DATA.config.capacity_per_slot * DATA.config.operating_hours.length;
+
+  document.getElementById("scenarioDesc").textContent =
+    `${scenario.params.n_bookings} booking/hari, peak_skew=${scenario.params.peak_skew} · ` +
+    `${scenario.repeats}x pengulangan · total kapasitas fasilitas = ${totalCapacity} booking/hari`;
+
+  const noteEl = document.getElementById("infeasibleNote");
+  if (scenario.params.n_bookings > totalCapacity) {
+    noteEl.innerHTML = `<div class="infeasible-note">
+      Catatan: skenario ini sengaja dirancang dengan permintaan (${scenario.params.n_bookings} booking)
+      melebihi total kapasitas fasilitas sepanjang hari (${totalCapacity} booking). Karena itu, sejumlah
+      konflik akan selalu tersisa walau sudah dioptimasi — ini keterbatasan kapasitas fasilitas itu
+      sendiri, bukan kegagalan algoritma PSO.
+    </div>`;
+  } else {
+    noteEl.innerHTML = "";
+  }
+
+  // --- KPI cards ---
+  const kpiGrid = document.getElementById("kpiGrid");
+  kpiGrid.innerHTML = "";
+  kpiDefs.forEach(def => {
+    const beforeMean = scenario.summary[`${def.beforeKey}_mean`];
+    const beforeStd = scenario.summary[`${def.beforeKey}_std`];
+    const afterMean = scenario.summary[`${def.afterKey}_mean`];
+    const afterStd = scenario.summary[`${def.afterKey}_std`];
+    const improved = def.lowerIsBetter ? afterMean < beforeMean : afterMean > beforeMean;
+    const pctChange = beforeMean === 0 ? 0 : Math.round(((afterMean - beforeMean) / beforeMean) * 100);
+
+    const card = document.createElement("div");
+    card.className = "kpi-card";
+    card.innerHTML = `
+      <div class="kpi-label">${def.label}</div>
+      <div class="kpi-row">
+        <span class="kpi-before">${beforeMean}${def.unit}</span>
+        <span class="kpi-arrow">&rarr;</span>
+        <span class="kpi-after">${afterMean}${def.unit}</span>
+      </div>
+      <div class="kpi-std">± std: ${beforeStd} &rarr; ${afterStd} (dari ${scenario.repeats}x pengulangan)</div>
+      <span class="kpi-delta ${improved ? "delta-good" : "delta-bad"}">
+        ${pctChange > 0 ? "+" : ""}${pctChange}% ${improved ? "membaik" : "memburuk"}
+      </span>`;
+    kpiGrid.appendChild(card);
+  });
+
+  // --- charts ---
+  if (!occupancyChart) initCharts(scenario); else updateCharts(scenario);
+
+  // --- tabel fuzzy ---
+  const hours = DATA.config.operating_hours;
+  const table = document.getElementById("fuzzyTable");
+  let rows = "<tr><th>Jam</th>";
+  hours.forEach(h => rows += `<th>${h.toString().padStart(2,"0")}:00</th>`);
+  rows += "</tr><tr><td><b>Sebelum</b></td>";
+  scenario.fuzzy_before.forEach(f => rows += `<td><span class="tag tag-${f.label}">${f.label}</span></td>`);
+  rows += "</tr><tr><td><b>Sesudah</b></td>";
+  scenario.fuzzy_after.forEach(f => rows += `<td><span class="tag tag-${f.label}">${f.label}</span></td>`);
+  rows += "</tr>";
+  table.innerHTML = rows;
+
+  // --- rekomendasi ---
+  const rec = scenario.recommendations;
+  document.getElementById("recSummaryText").textContent = rec.summary_text;
+
+  const reduceList = document.getElementById("recReduceList");
+  if (rec.redistribution.jam_dikurangi.length === 0) {
+    reduceList.innerHTML = `<p class="desc" style="margin:0;">Tidak ada jam yang perlu dikurangi bebannya.</p>`;
+  } else {
+    reduceList.innerHTML = rec.redistribution.jam_dikurangi.map(r => `
+      <div class="rec-item sev-3">
+        <span class="rec-hour">${r.hour.toString().padStart(2,"0")}:00</span>
+        <span class="rec-delta">${r.delta} booking dipindah keluar</span>
+      </div>`).join("");
+  }
+
+  const promoteList = document.getElementById("recPromoteList");
+  const promoteHours = rec.status_per_slot.filter(s => s.status === "Kurang Optimal");
+  if (promoteHours.length === 0) {
+    promoteList.innerHTML = `<p class="desc" style="margin:0;">Tidak ada jam dengan okupansi rendah pada skenario ini.</p>`;
+  } else {
+    promoteList.innerHTML = promoteHours.map(s => `
+      <div class="rec-item sev-1">
+        <span class="rec-hour">${s.hour.toString().padStart(2,"0")}:00</span>
+        <span class="rec-delta">okupansi ${Math.round(s.ratio*100)}% dari kapasitas</span>
+      </div>`).join("");
+  }
+
+  const statusTable = document.getElementById("statusTable");
+  const sorted = [...rec.status_per_slot].sort((a,b) => b.severity - a.severity);
+  let srows = "<tr><th>Jam</th><th>Demand</th><th>Rasio</th><th>Status</th><th style='text-align:left'>Saran Tindakan</th></tr>";
+  sorted.forEach(s => {
+    const cls = s.status.replace(" ", "-");
+    srows += `<tr>
+      <td><b>${s.hour.toString().padStart(2,"0")}:00</b></td>
+      <td>${s.demand}</td>
+      <td>${Math.round(s.ratio*100)}%</td>
+      <td><span class="status-badge status-${cls}">${s.status}</span></td>
+      <td style="text-align:left; color:var(--muted);">${s.saran}</td>
+    </tr>`;
+  });
+  statusTable.innerHTML = srows;
+}
+
+/* ==========================================================================
+   Isi catatan metodologi di footer & jalankan render pertama kali
+   ========================================================================== */
+document.getElementById("wText").textContent = DATA.config.w;
+document.getElementById("c1Text").textContent = DATA.config.c1;
+document.getElementById("c2Text").textContent = DATA.config.c2;
+document.getElementById("swarmText").textContent = DATA.config.swarm_size;
+document.getElementById("iterText").textContent = DATA.config.iterations;
+document.getElementById("capText").textContent = DATA.config.capacity_per_slot;
+document.getElementById("repeatsText").textContent = Object.values(DATA.scenarios)[0].repeats;
+
+render();
+</script>
+</body>
+</html>
