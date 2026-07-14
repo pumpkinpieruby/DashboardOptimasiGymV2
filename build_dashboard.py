@@ -13,12 +13,16 @@ import json
 from pathlib import Path
 
 DATA_JSON = Path("experiment_results") / "dashboard_data.json"
+WW_DATA_JSON = Path("experiment_results") / "weekday_weekend_data.json"
 TEMPLATE_HTML = Path("dashboard_template.html")
 CHARTJS_LIB = Path("vendor_chart.umd.min.js")   # library Chart.js (MIT license), ditanam langsung
 OUTPUT_HTML = Path("dashboard_optimasi_gym.html")
 
 with open(DATA_JSON, "r", encoding="utf-8") as f:
     data = json.load(f)
+
+with open(WW_DATA_JSON, "r", encoding="utf-8") as f:
+    ww_data = json.load(f)
 
 with open(TEMPLATE_HTML, "r", encoding="utf-8") as f:
     template = f.read()
@@ -31,6 +35,7 @@ with open(CHARTJS_LIB, "r", encoding="utf-8") as f:
 # yang memblokir CDN (mis. beberapa jaringan kampus/kantor).
 final_html = template.replace("__CHARTJS_LIB__", chartjs_code)
 final_html = final_html.replace("__DATA_JSON__", json.dumps(data))
+final_html = final_html.replace("__WW_DATA_JSON__", json.dumps(ww_data))
 
 with open(OUTPUT_HTML, "w", encoding="utf-8") as f:
     f.write(final_html)

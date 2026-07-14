@@ -1,0 +1,4122 @@
+{
+  "labels": {
+    "weekday": "Hari Kerja (Senin\u2013Jumat)",
+    "weekend": "Akhir Pekan (Sabtu\u2013Minggu)"
+  },
+  "day_types": {
+    "weekday": {
+      "Normal (penggunaan merata)": {
+        "params": {
+          "n_bookings": 60,
+          "peak_skew": 0.8
+        },
+        "repeats": 30,
+        "summary": {
+          "conflicts_before_mean": 3.87,
+          "conflicts_before_std": 2.08,
+          "conflicts_after_mean": 0,
+          "conflicts_after_std": 0.0,
+          "utilization_before_mean": 62.36,
+          "utilization_before_std": 2.32,
+          "utilization_after_mean": 66.7,
+          "utilization_after_std": 0.0,
+          "empty_before_mean": 16.48,
+          "empty_before_std": 6.94,
+          "empty_after_mean": 4.1,
+          "empty_after_std": 4.05,
+          "wait_before_mean": 20.12,
+          "wait_before_std": 0.65,
+          "wait_after_mean": 0.0,
+          "wait_after_std": 0.0,
+          "time_ms_mean": 26.38,
+          "time_ms_std": 4.92
+        },
+        "convergence": [
+          42.0,
+          39.388888888888886,
+          39.388888888888886,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333,
+          38.83333333333333
+        ],
+        "demand_before": [
+          7,
+          5,
+          4,
+          6,
+          6,
+          5,
+          5,
+          1,
+          1,
+          5,
+          0,
+          1,
+          1,
+          2,
+          3,
+          2,
+          5,
+          1
+        ],
+        "demand_after": [
+          5,
+          5,
+          4,
+          5,
+          5,
+          5,
+          5,
+          1,
+          1,
+          5,
+          2,
+          2,
+          2,
+          2,
+          3,
+          2,
+          5,
+          1
+        ],
+        "fuzzy_before": [
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.0,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          }
+        ],
+        "fuzzy_after": [
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          }
+        ],
+        "recommendations": {
+          "status_per_slot": [
+            {
+              "hour": 5,
+              "demand": 7,
+              "ratio": 1.4,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 6,
+              "demand": 5,
+              "ratio": 1.0,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 7,
+              "demand": 4,
+              "ratio": 0.8,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 8,
+              "demand": 6,
+              "ratio": 1.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 9,
+              "demand": 6,
+              "ratio": 1.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 10,
+              "demand": 5,
+              "ratio": 1.0,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 11,
+              "demand": 5,
+              "ratio": 1.0,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 12,
+              "demand": 1,
+              "ratio": 0.2,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 13,
+              "demand": 1,
+              "ratio": 0.2,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 14,
+              "demand": 5,
+              "ratio": 1.0,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 15,
+              "demand": 0,
+              "ratio": 0.0,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 16,
+              "demand": 1,
+              "ratio": 0.2,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 17,
+              "demand": 1,
+              "ratio": 0.2,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 18,
+              "demand": 2,
+              "ratio": 0.4,
+              "fuzzy_label": "rendah",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 19,
+              "demand": 3,
+              "ratio": 0.6,
+              "fuzzy_label": "sedang",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 20,
+              "demand": 2,
+              "ratio": 0.4,
+              "fuzzy_label": "rendah",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 21,
+              "demand": 5,
+              "ratio": 1.0,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 22,
+              "demand": 1,
+              "ratio": 0.2,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            }
+          ],
+          "redistribution": {
+            "total_booking_dipindah": 4,
+            "jam_dikurangi": [
+              {
+                "hour": 5,
+                "delta": -2
+              },
+              {
+                "hour": 8,
+                "delta": -1
+              },
+              {
+                "hour": 9,
+                "delta": -1
+              }
+            ],
+            "jam_ditambah": [
+              {
+                "hour": 15,
+                "delta": 2
+              },
+              {
+                "hour": 16,
+                "delta": 1
+              },
+              {
+                "hour": 17,
+                "delta": 1
+              }
+            ]
+          },
+          "summary_text": "Sistem merekomendasikan pemindahan 4 booking dari jam padat (05:00, 08:00, 09:00) ke jam yang lebih longgar (15:00, 16:00, 17:00). Langkah ini mengeliminasi 3.87 konflik penjadwalan. Utilisasi fasilitas meningkat 4.3 poin persentase."
+        }
+      },
+      "Jam sibuk (kepadatan tinggi)": {
+        "params": {
+          "n_bookings": 90,
+          "peak_skew": 2.2
+        },
+        "repeats": 30,
+        "summary": {
+          "conflicts_before_mean": 19.63,
+          "conflicts_before_std": 2.83,
+          "conflicts_after_mean": 0,
+          "conflicts_after_std": 0.0,
+          "utilization_before_mean": 78.19,
+          "utilization_before_std": 3.14,
+          "utilization_after_mean": 100.0,
+          "utilization_after_std": 0.0,
+          "empty_before_mean": 5.94,
+          "empty_before_std": 4.28,
+          "empty_after_mean": 0.0,
+          "empty_after_std": 0.0,
+          "wait_before_mean": 21.65,
+          "wait_before_std": 1.62,
+          "wait_after_mean": 0.0,
+          "wait_after_std": 0.0,
+          "time_ms_mean": 60.7,
+          "time_ms_std": 8.59
+        },
+        "convergence": [
+          751.6666666666666,
+          751.6666666666666,
+          750.7222222222222,
+          550.3888888888889,
+          550.3888888888889,
+          550.3888888888889,
+          550.3888888888889,
+          550.3888888888889,
+          550.3888888888889,
+          550.3888888888889,
+          451.3333333333333,
+          451.3333333333333,
+          451.3333333333333,
+          451.3333333333333,
+          451.3333333333333,
+          451.3333333333333,
+          451.3333333333333,
+          451.3333333333333,
+          451.3333333333333,
+          451.3333333333333,
+          351.72222222222223,
+          351.72222222222223,
+          351.72222222222223,
+          351.72222222222223,
+          351.72222222222223,
+          351.72222222222223,
+          351.72222222222223,
+          351.72222222222223,
+          351.72222222222223,
+          351.72222222222223,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667,
+          351.1666666666667
+        ],
+        "demand_before": [
+          10,
+          5,
+          11,
+          9,
+          6,
+          7,
+          6,
+          4,
+          4,
+          4,
+          1,
+          3,
+          3,
+          4,
+          3,
+          3,
+          6,
+          1
+        ],
+        "demand_after": [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "fuzzy_before": [
+          {
+            "ratio": 2.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 2.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          }
+        ],
+        "fuzzy_after": [
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          }
+        ],
+        "recommendations": {
+          "status_per_slot": [
+            {
+              "hour": 5,
+              "demand": 10,
+              "ratio": 2.0,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 6,
+              "demand": 5,
+              "ratio": 1.0,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 7,
+              "demand": 11,
+              "ratio": 2.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 8,
+              "demand": 9,
+              "ratio": 1.8,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 9,
+              "demand": 6,
+              "ratio": 1.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 10,
+              "demand": 7,
+              "ratio": 1.4,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 11,
+              "demand": 6,
+              "ratio": 1.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 12,
+              "demand": 4,
+              "ratio": 0.8,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 13,
+              "demand": 4,
+              "ratio": 0.8,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 14,
+              "demand": 4,
+              "ratio": 0.8,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 15,
+              "demand": 1,
+              "ratio": 0.2,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 16,
+              "demand": 3,
+              "ratio": 0.6,
+              "fuzzy_label": "sedang",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 17,
+              "demand": 3,
+              "ratio": 0.6,
+              "fuzzy_label": "sedang",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 18,
+              "demand": 4,
+              "ratio": 0.8,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 19,
+              "demand": 3,
+              "ratio": 0.6,
+              "fuzzy_label": "sedang",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 20,
+              "demand": 3,
+              "ratio": 0.6,
+              "fuzzy_label": "sedang",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 21,
+              "demand": 6,
+              "ratio": 1.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 22,
+              "demand": 1,
+              "ratio": 0.2,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            }
+          ],
+          "redistribution": {
+            "total_booking_dipindah": 20,
+            "jam_dikurangi": [
+              {
+                "hour": 7,
+                "delta": -6
+              },
+              {
+                "hour": 5,
+                "delta": -5
+              },
+              {
+                "hour": 8,
+                "delta": -4
+              },
+              {
+                "hour": 10,
+                "delta": -2
+              },
+              {
+                "hour": 9,
+                "delta": -1
+              },
+              {
+                "hour": 11,
+                "delta": -1
+              },
+              {
+                "hour": 21,
+                "delta": -1
+              }
+            ],
+            "jam_ditambah": [
+              {
+                "hour": 15,
+                "delta": 4
+              },
+              {
+                "hour": 22,
+                "delta": 4
+              },
+              {
+                "hour": 16,
+                "delta": 2
+              },
+              {
+                "hour": 17,
+                "delta": 2
+              },
+              {
+                "hour": 19,
+                "delta": 2
+              },
+              {
+                "hour": 20,
+                "delta": 2
+              },
+              {
+                "hour": 12,
+                "delta": 1
+              },
+              {
+                "hour": 13,
+                "delta": 1
+              },
+              {
+                "hour": 14,
+                "delta": 1
+              },
+              {
+                "hour": 18,
+                "delta": 1
+              }
+            ]
+          },
+          "summary_text": "Sistem merekomendasikan pemindahan 20 booking dari jam padat (07:00, 05:00, 08:00) ke jam yang lebih longgar (15:00, 22:00, 16:00). Langkah ini mengeliminasi 19.63 konflik penjadwalan. Utilisasi fasilitas meningkat 21.8 poin persentase."
+        }
+      },
+      "Konflik jadwal (beban berlebih)": {
+        "params": {
+          "n_bookings": 130,
+          "peak_skew": 2.6
+        },
+        "repeats": 30,
+        "summary": {
+          "conflicts_before_mean": 48.7,
+          "conflicts_before_std": 2.75,
+          "conflicts_after_mean": 40,
+          "conflicts_after_std": 0.0,
+          "utilization_before_mean": 90.33,
+          "utilization_before_std": 3.04,
+          "utilization_after_mean": 100.0,
+          "utilization_after_std": 0.0,
+          "empty_before_mean": 2.24,
+          "empty_before_std": 3.09,
+          "empty_after_mean": 0.0,
+          "empty_after_std": 0.0,
+          "wait_before_mean": 25.81,
+          "wait_before_std": 2.36,
+          "wait_after_mean": 20.0,
+          "wait_after_std": 0.0,
+          "time_ms_mean": 150.06,
+          "time_ms_std": 29.05
+        },
+        "convergence": [
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.3086419753085,
+          4059.3086419753085,
+          4059.3086419753085,
+          4059.3086419753085,
+          4059.3086419753085,
+          4059.3086419753085,
+          4059.3086419753085,
+          4059.3086419753085,
+          4059.3086419753085,
+          4059.3086419753085,
+          4058.753086419753,
+          4058.753086419753,
+          4058.753086419753,
+          4058.753086419753,
+          4058.753086419753,
+          4058.753086419753,
+          4058.753086419753,
+          4058.1975308641977,
+          4058.1975308641977,
+          4058.1975308641977,
+          4058.1975308641977,
+          4058.1975308641977,
+          4058.1975308641977,
+          4058.1975308641977,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642,
+          4057.641975308642
+        ],
+        "demand_before": [
+          13,
+          5,
+          14,
+          11,
+          7,
+          7,
+          8,
+          10,
+          6,
+          6,
+          3,
+          5,
+          7,
+          6,
+          5,
+          4,
+          10,
+          3
+        ],
+        "demand_after": [
+          8,
+          7,
+          8,
+          6,
+          7,
+          7,
+          8,
+          8,
+          7,
+          9,
+          6,
+          6,
+          7,
+          7,
+          7,
+          6,
+          8,
+          8
+        ],
+        "fuzzy_before": [
+          {
+            "ratio": 2.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 2.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 2.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 2.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 2.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          }
+        ],
+        "fuzzy_after": [
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          }
+        ],
+        "recommendations": {
+          "status_per_slot": [
+            {
+              "hour": 5,
+              "demand": 13,
+              "ratio": 2.6,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 6,
+              "demand": 5,
+              "ratio": 1.0,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 7,
+              "demand": 14,
+              "ratio": 2.8,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 8,
+              "demand": 11,
+              "ratio": 2.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 9,
+              "demand": 7,
+              "ratio": 1.4,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 10,
+              "demand": 7,
+              "ratio": 1.4,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 11,
+              "demand": 8,
+              "ratio": 1.6,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 12,
+              "demand": 10,
+              "ratio": 2.0,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 13,
+              "demand": 6,
+              "ratio": 1.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 14,
+              "demand": 6,
+              "ratio": 1.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 15,
+              "demand": 3,
+              "ratio": 0.6,
+              "fuzzy_label": "sedang",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 16,
+              "demand": 5,
+              "ratio": 1.0,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 17,
+              "demand": 7,
+              "ratio": 1.4,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 18,
+              "demand": 6,
+              "ratio": 1.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 19,
+              "demand": 5,
+              "ratio": 1.0,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 20,
+              "demand": 4,
+              "ratio": 0.8,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 21,
+              "demand": 10,
+              "ratio": 2.0,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 22,
+              "demand": 3,
+              "ratio": 0.6,
+              "fuzzy_label": "sedang",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            }
+          ],
+          "redistribution": {
+            "total_booking_dipindah": 20,
+            "jam_dikurangi": [
+              {
+                "hour": 7,
+                "delta": -6
+              },
+              {
+                "hour": 5,
+                "delta": -5
+              },
+              {
+                "hour": 8,
+                "delta": -5
+              },
+              {
+                "hour": 12,
+                "delta": -2
+              },
+              {
+                "hour": 21,
+                "delta": -2
+              }
+            ],
+            "jam_ditambah": [
+              {
+                "hour": 22,
+                "delta": 5
+              },
+              {
+                "hour": 14,
+                "delta": 3
+              },
+              {
+                "hour": 15,
+                "delta": 3
+              },
+              {
+                "hour": 6,
+                "delta": 2
+              },
+              {
+                "hour": 19,
+                "delta": 2
+              },
+              {
+                "hour": 20,
+                "delta": 2
+              },
+              {
+                "hour": 13,
+                "delta": 1
+              },
+              {
+                "hour": 16,
+                "delta": 1
+              },
+              {
+                "hour": 18,
+                "delta": 1
+              }
+            ]
+          },
+          "summary_text": "Sistem merekomendasikan pemindahan 20 booking dari jam padat (07:00, 05:00, 08:00) ke jam yang lebih longgar (22:00, 14:00, 15:00). Langkah ini mengeliminasi 8.7 konflik penjadwalan. Utilisasi fasilitas meningkat 9.7 poin persentase."
+        }
+      }
+    },
+    "weekend": {
+      "Normal (penggunaan merata)": {
+        "params": {
+          "n_bookings": 60,
+          "peak_skew": 0.8
+        },
+        "repeats": 30,
+        "summary": {
+          "conflicts_before_mean": 5.03,
+          "conflicts_before_std": 1.66,
+          "conflicts_after_mean": 0,
+          "conflicts_after_std": 0.0,
+          "utilization_before_mean": 61.06,
+          "utilization_before_std": 1.83,
+          "utilization_after_mean": 66.7,
+          "utilization_after_std": 0.0,
+          "empty_before_mean": 17.4,
+          "empty_before_std": 7.12,
+          "empty_after_mean": 2.79,
+          "empty_after_std": 3.73,
+          "wait_before_mean": 20.0,
+          "wait_before_std": 0.0,
+          "wait_after_mean": 0.0,
+          "wait_after_std": 0.0,
+          "time_ms_mean": 50.34,
+          "time_ms_std": 18.31
+        },
+        "convergence": [
+          42.55555555555556,
+          36.77777777777778,
+          32.111111111111114,
+          32.111111111111114,
+          32.111111111111114,
+          32.111111111111114,
+          32.111111111111114,
+          32.111111111111114,
+          31.0,
+          31.0,
+          31.0,
+          31.0,
+          31.0,
+          31.0,
+          31.0,
+          31.0,
+          31.0,
+          31.0,
+          31.0,
+          30.444444444444443,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889,
+          29.88888888888889
+        ],
+        "demand_before": [
+          7,
+          6,
+          3,
+          6,
+          7,
+          6,
+          4,
+          1,
+          2,
+          3,
+          1,
+          0,
+          1,
+          1,
+          4,
+          2,
+          5,
+          1
+        ],
+        "demand_after": [
+          5,
+          5,
+          3,
+          5,
+          5,
+          5,
+          4,
+          2,
+          2,
+          3,
+          2,
+          2,
+          2,
+          2,
+          4,
+          2,
+          5,
+          2
+        ],
+        "fuzzy_before": [
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.0,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          }
+        ],
+        "fuzzy_after": [
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          }
+        ],
+        "recommendations": {
+          "status_per_slot": [
+            {
+              "hour": 5,
+              "demand": 7,
+              "ratio": 1.4,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 6,
+              "demand": 6,
+              "ratio": 1.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 7,
+              "demand": 3,
+              "ratio": 0.6,
+              "fuzzy_label": "sedang",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 8,
+              "demand": 6,
+              "ratio": 1.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 9,
+              "demand": 7,
+              "ratio": 1.4,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 10,
+              "demand": 6,
+              "ratio": 1.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 11,
+              "demand": 4,
+              "ratio": 0.8,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 12,
+              "demand": 1,
+              "ratio": 0.2,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 13,
+              "demand": 2,
+              "ratio": 0.4,
+              "fuzzy_label": "rendah",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 14,
+              "demand": 3,
+              "ratio": 0.6,
+              "fuzzy_label": "sedang",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 15,
+              "demand": 1,
+              "ratio": 0.2,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 16,
+              "demand": 0,
+              "ratio": 0.0,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 17,
+              "demand": 1,
+              "ratio": 0.2,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 18,
+              "demand": 1,
+              "ratio": 0.2,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 19,
+              "demand": 4,
+              "ratio": 0.8,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 20,
+              "demand": 2,
+              "ratio": 0.4,
+              "fuzzy_label": "rendah",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 21,
+              "demand": 5,
+              "ratio": 1.0,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 22,
+              "demand": 1,
+              "ratio": 0.2,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            }
+          ],
+          "redistribution": {
+            "total_booking_dipindah": 7,
+            "jam_dikurangi": [
+              {
+                "hour": 5,
+                "delta": -2
+              },
+              {
+                "hour": 9,
+                "delta": -2
+              },
+              {
+                "hour": 6,
+                "delta": -1
+              },
+              {
+                "hour": 8,
+                "delta": -1
+              },
+              {
+                "hour": 10,
+                "delta": -1
+              }
+            ],
+            "jam_ditambah": [
+              {
+                "hour": 16,
+                "delta": 2
+              },
+              {
+                "hour": 12,
+                "delta": 1
+              },
+              {
+                "hour": 15,
+                "delta": 1
+              },
+              {
+                "hour": 17,
+                "delta": 1
+              },
+              {
+                "hour": 18,
+                "delta": 1
+              },
+              {
+                "hour": 22,
+                "delta": 1
+              }
+            ]
+          },
+          "summary_text": "Sistem merekomendasikan pemindahan 7 booking dari jam padat (05:00, 09:00, 06:00) ke jam yang lebih longgar (16:00, 12:00, 15:00). Langkah ini mengeliminasi 5.03 konflik penjadwalan. Utilisasi fasilitas meningkat 5.6 poin persentase."
+        }
+      },
+      "Jam sibuk (kepadatan tinggi)": {
+        "params": {
+          "n_bookings": 90,
+          "peak_skew": 2.2
+        },
+        "repeats": 30,
+        "summary": {
+          "conflicts_before_mean": 22.43,
+          "conflicts_before_std": 3.06,
+          "conflicts_after_mean": 0,
+          "conflicts_after_std": 0.0,
+          "utilization_before_mean": 75.08,
+          "utilization_before_std": 3.41,
+          "utilization_after_mean": 100.0,
+          "utilization_after_std": 0.0,
+          "empty_before_mean": 11.68,
+          "empty_before_std": 5.96,
+          "empty_after_mean": 0.0,
+          "empty_after_std": 0.0,
+          "wait_before_mean": 21.83,
+          "wait_before_std": 1.84,
+          "wait_after_mean": 0.0,
+          "wait_after_std": 0.0,
+          "time_ms_mean": 73.64,
+          "time_ms_std": 18.83
+        },
+        "convergence": [
+          1156.4444444444443,
+          1156.4444444444443,
+          1156.4444444444443,
+          1151.7777777777778,
+          953.1111111111111,
+          952.0,
+          952.0,
+          952.0,
+          952.0,
+          951.6111111111111,
+          850.8888888888889,
+          850.8888888888889,
+          850.8888888888889,
+          850.8888888888889,
+          752.2222222222222,
+          752.2222222222222,
+          752.2222222222222,
+          752.2222222222222,
+          752.2222222222222,
+          752.2222222222222,
+          752.2222222222222,
+          749.0555555555555,
+          749.0555555555555,
+          749.0555555555555,
+          749.0555555555555,
+          749.0555555555555,
+          749.0555555555555,
+          749.0555555555555,
+          749.0555555555555,
+          749.0555555555555,
+          748.5,
+          748.5,
+          748.5,
+          748.5,
+          748.5,
+          748.5,
+          748.5,
+          748.5,
+          748.5,
+          748.5,
+          748.5,
+          748.5,
+          748.5,
+          650.5555555555555,
+          650.5555555555555,
+          650.5555555555555,
+          650.5555555555555,
+          650.5555555555555,
+          650.5555555555555,
+          650.5555555555555,
+          650.5555555555555,
+          650.5555555555555,
+          649.4444444444445,
+          649.4444444444445,
+          649.4444444444445,
+          649.4444444444445,
+          649.4444444444445,
+          649.4444444444445,
+          649.4444444444445,
+          649.4444444444445
+        ],
+        "demand_before": [
+          14,
+          5,
+          4,
+          14,
+          8,
+          8,
+          3,
+          7,
+          3,
+          0,
+          3,
+          1,
+          0,
+          2,
+          5,
+          4,
+          8,
+          1
+        ],
+        "demand_after": [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "fuzzy_before": [
+          {
+            "ratio": 2.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 2.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          },
+          {
+            "ratio": 0.0,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.0,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          }
+        ],
+        "fuzzy_after": [
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          }
+        ],
+        "recommendations": {
+          "status_per_slot": [
+            {
+              "hour": 5,
+              "demand": 14,
+              "ratio": 2.8,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 6,
+              "demand": 5,
+              "ratio": 1.0,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 7,
+              "demand": 4,
+              "ratio": 0.8,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 8,
+              "demand": 14,
+              "ratio": 2.8,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 9,
+              "demand": 8,
+              "ratio": 1.6,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 10,
+              "demand": 8,
+              "ratio": 1.6,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 11,
+              "demand": 3,
+              "ratio": 0.6,
+              "fuzzy_label": "sedang",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 12,
+              "demand": 7,
+              "ratio": 1.4,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 13,
+              "demand": 3,
+              "ratio": 0.6,
+              "fuzzy_label": "sedang",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 14,
+              "demand": 0,
+              "ratio": 0.0,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 15,
+              "demand": 3,
+              "ratio": 0.6,
+              "fuzzy_label": "sedang",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 16,
+              "demand": 1,
+              "ratio": 0.2,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 17,
+              "demand": 0,
+              "ratio": 0.0,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 18,
+              "demand": 2,
+              "ratio": 0.4,
+              "fuzzy_label": "rendah",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 19,
+              "demand": 5,
+              "ratio": 1.0,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 20,
+              "demand": 4,
+              "ratio": 0.8,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 21,
+              "demand": 8,
+              "ratio": 1.6,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 22,
+              "demand": 1,
+              "ratio": 0.2,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            }
+          ],
+          "redistribution": {
+            "total_booking_dipindah": 29,
+            "jam_dikurangi": [
+              {
+                "hour": 5,
+                "delta": -9
+              },
+              {
+                "hour": 8,
+                "delta": -9
+              },
+              {
+                "hour": 9,
+                "delta": -3
+              },
+              {
+                "hour": 10,
+                "delta": -3
+              },
+              {
+                "hour": 21,
+                "delta": -3
+              },
+              {
+                "hour": 12,
+                "delta": -2
+              }
+            ],
+            "jam_ditambah": [
+              {
+                "hour": 14,
+                "delta": 5
+              },
+              {
+                "hour": 17,
+                "delta": 5
+              },
+              {
+                "hour": 16,
+                "delta": 4
+              },
+              {
+                "hour": 22,
+                "delta": 4
+              },
+              {
+                "hour": 18,
+                "delta": 3
+              },
+              {
+                "hour": 11,
+                "delta": 2
+              },
+              {
+                "hour": 13,
+                "delta": 2
+              },
+              {
+                "hour": 15,
+                "delta": 2
+              },
+              {
+                "hour": 7,
+                "delta": 1
+              },
+              {
+                "hour": 20,
+                "delta": 1
+              }
+            ]
+          },
+          "summary_text": "Sistem merekomendasikan pemindahan 29 booking dari jam padat (05:00, 08:00, 09:00) ke jam yang lebih longgar (14:00, 17:00, 16:00). Langkah ini mengeliminasi 22.43 konflik penjadwalan. Utilisasi fasilitas meningkat 24.9 poin persentase."
+        }
+      },
+      "Konflik jadwal (beban berlebih)": {
+        "params": {
+          "n_bookings": 130,
+          "peak_skew": 2.6
+        },
+        "repeats": 30,
+        "summary": {
+          "conflicts_before_mean": 55.5,
+          "conflicts_before_std": 3.48,
+          "conflicts_after_mean": 40,
+          "conflicts_after_std": 0.0,
+          "utilization_before_mean": 82.78,
+          "utilization_before_std": 3.87,
+          "utilization_after_mean": 100.0,
+          "utilization_after_std": 0.0,
+          "empty_before_mean": 9.46,
+          "empty_before_std": 5.0,
+          "empty_after_mean": 0.0,
+          "empty_after_std": 0.0,
+          "wait_before_mean": 26.15,
+          "wait_before_std": 2.22,
+          "wait_after_mean": 20.02,
+          "wait_after_std": 0.09,
+          "time_ms_mean": 160.54,
+          "time_ms_std": 23.93
+        },
+        "convergence": [
+          4165.586419753086,
+          4067.0864197530864,
+          4062.0864197530864,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4060.41975308642,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864,
+          4059.864197530864
+        ],
+        "demand_before": [
+          16,
+          7,
+          5,
+          19,
+          9,
+          9,
+          6,
+          14,
+          4,
+          1,
+          3,
+          2,
+          0,
+          4,
+          11,
+          4,
+          13,
+          3
+        ],
+        "demand_after": [
+          9,
+          7,
+          6,
+          8,
+          7,
+          8,
+          7,
+          8,
+          9,
+          5,
+          8,
+          6,
+          6,
+          6,
+          7,
+          8,
+          7,
+          8
+        ],
+        "fuzzy_before": [
+          {
+            "ratio": 3.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 3.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 2.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.2,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          },
+          {
+            "ratio": 0.4,
+            "memberships": {
+              "rendah": 0.7499999999999998,
+              "sedang": 0.3333333333333335,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.0,
+            "memberships": {
+              "rendah": 1.0,
+              "sedang": 0.0,
+              "tinggi": 0.0
+            },
+            "label": "rendah"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 2.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.33333333333333326,
+              "tinggi": 0.5000000000000001
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 2.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 0.6,
+            "memberships": {
+              "rendah": 0.24999999999999994,
+              "sedang": 1.0,
+              "tinggi": 0.0
+            },
+            "label": "sedang"
+          }
+        ],
+        "fuzzy_after": [
+          {
+            "ratio": 1.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.8,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.0,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.2,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.4,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          },
+          {
+            "ratio": 1.6,
+            "memberships": {
+              "rendah": 0.0,
+              "sedang": 0.0,
+              "tinggi": 1.0
+            },
+            "label": "tinggi"
+          }
+        ],
+        "recommendations": {
+          "status_per_slot": [
+            {
+              "hour": 5,
+              "demand": 16,
+              "ratio": 3.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 6,
+              "demand": 7,
+              "ratio": 1.4,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 7,
+              "demand": 5,
+              "ratio": 1.0,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 8,
+              "demand": 19,
+              "ratio": 3.8,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 9,
+              "demand": 9,
+              "ratio": 1.8,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 10,
+              "demand": 9,
+              "ratio": 1.8,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 11,
+              "demand": 6,
+              "ratio": 1.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 12,
+              "demand": 14,
+              "ratio": 2.8,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 13,
+              "demand": 4,
+              "ratio": 0.8,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 14,
+              "demand": 1,
+              "ratio": 0.2,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 15,
+              "demand": 3,
+              "ratio": 0.6,
+              "fuzzy_label": "sedang",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 16,
+              "demand": 2,
+              "ratio": 0.4,
+              "fuzzy_label": "rendah",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            },
+            {
+              "hour": 17,
+              "demand": 0,
+              "ratio": 0.0,
+              "fuzzy_label": "rendah",
+              "status": "Kurang Optimal",
+              "severity": 1,
+              "saran": "Okupansi rendah -- berpotensi untuk promosi (diskon jam tertentu, kelas komunitas, sesi khusus) atau dijadwalkan untuk maintenance alat."
+            },
+            {
+              "hour": 18,
+              "demand": 4,
+              "ratio": 0.8,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 19,
+              "demand": 11,
+              "ratio": 2.2,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 20,
+              "demand": 4,
+              "ratio": 0.8,
+              "fuzzy_label": "tinggi",
+              "status": "Perlu Perhatian",
+              "severity": 2,
+              "saran": "Mendekati kapasitas -- pantau tren booking pada jam ini; berpotensi jadi konflik jika jumlah anggota terus bertambah."
+            },
+            {
+              "hour": 21,
+              "demand": 13,
+              "ratio": 2.6,
+              "fuzzy_label": "tinggi",
+              "status": "Kritis",
+              "severity": 3,
+              "saran": "Melebihi kapasitas -- pertimbangkan menambah kapasitas/alat pada jam ini, menambah staf, atau mengarahkan sebagian anggota ke jam alternatif yang lebih longgar."
+            },
+            {
+              "hour": 22,
+              "demand": 3,
+              "ratio": 0.6,
+              "fuzzy_label": "sedang",
+              "status": "Ideal",
+              "severity": 0,
+              "saran": "Okupansi seimbang, tidak perlu tindakan khusus."
+            }
+          ],
+          "redistribution": {
+            "total_booking_dipindah": 37,
+            "jam_dikurangi": [
+              {
+                "hour": 8,
+                "delta": -11
+              },
+              {
+                "hour": 5,
+                "delta": -7
+              },
+              {
+                "hour": 12,
+                "delta": -6
+              },
+              {
+                "hour": 21,
+                "delta": -6
+              },
+              {
+                "hour": 19,
+                "delta": -4
+              },
+              {
+                "hour": 9,
+                "delta": -2
+              },
+              {
+                "hour": 10,
+                "delta": -1
+              }
+            ],
+            "jam_ditambah": [
+              {
+                "hour": 17,
+                "delta": 6
+              },
+              {
+                "hour": 13,
+                "delta": 5
+              },
+              {
+                "hour": 15,
+                "delta": 5
+              },
+              {
+                "hour": 22,
+                "delta": 5
+              },
+              {
+                "hour": 14,
+                "delta": 4
+              },
+              {
+                "hour": 16,
+                "delta": 4
+              },
+              {
+                "hour": 20,
+                "delta": 4
+              },
+              {
+                "hour": 18,
+                "delta": 2
+              },
+              {
+                "hour": 7,
+                "delta": 1
+              },
+              {
+                "hour": 11,
+                "delta": 1
+              }
+            ]
+          },
+          "summary_text": "Sistem merekomendasikan pemindahan 37 booking dari jam padat (08:00, 05:00, 12:00) ke jam yang lebih longgar (17:00, 13:00, 15:00). Langkah ini mengeliminasi 15.5 konflik penjadwalan. Utilisasi fasilitas meningkat 17.2 poin persentase."
+        }
+      }
+    }
+  }
+}

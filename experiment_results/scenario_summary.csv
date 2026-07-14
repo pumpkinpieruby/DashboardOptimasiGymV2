@@ -1,4 +1,4 @@
 scenario,conflicts_before_mean,conflicts_before_std,conflicts_after_mean,conflicts_after_std,utilization_before_mean,utilization_before_std,utilization_after_mean,utilization_after_std,empty_before_mean,empty_before_std,empty_after_mean,empty_after_std,wait_before_mean,wait_before_std,wait_after_mean,wait_after_std,time_ms_mean,time_ms_std
-Normal (penggunaan merata),3.5,1.75,0,0.0,62.76,1.94,66.7,0.0,14.82,6.47,2.61,4.49,19.33,3.59,0.0,0.0,13.91,3.41
-Jam sibuk (kepadatan tinggi),18.67,2.95,0,0.0,79.26,3.27,100.0,0.0,5.39,4.64,0.0,0.0,21.41,2.34,0.0,0.0,34.02,4.2
-Konflik jadwal (beban berlebih),48.9,3.88,40,0.0,90.1,4.31,100.0,0.0,2.05,3.67,0.0,0.0,24.75,1.67,20.0,0.0,71.72,4.97
+Normal (penggunaan merata),3.5,1.75,0,0.0,62.76,1.94,66.7,0.0,14.82,6.47,2.61,4.49,19.33,3.59,0.0,0.0,15.32,3.91
+Jam sibuk (kepadatan tinggi),18.67,2.95,0,0.0,79.26,3.27,100.0,0.0,5.39,4.64,0.0,0.0,21.41,2.34,0.0,0.0,38.16,5.96
+Konflik jadwal (beban berlebih),48.9,3.88,40,0.0,90.1,4.31,100.0,0.0,2.05,3.67,0.0,0.0,24.75,1.67,20.0,0.0,65.22,5.09

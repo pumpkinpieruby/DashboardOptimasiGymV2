@@ -51,7 +51,14 @@ def classify_slot(demand: int, capacity: int) -> dict:
         "sedang": membership_sedang(ratio),
         "tinggi": membership_tinggi(ratio),
     }
-    label = max(memberships, key=memberships.get)
+
+    if memberships["tinggi"] >= memberships["sedang"] and memberships["tinggi"] >= memberships["rendah"]:
+        label = "tinggi"
+    elif memberships["sedang"] >= memberships["rendah"]:
+        label = "sedang"
+    else:
+        label = "rendah"
+
     return {"ratio": ratio, "memberships": memberships, "label": label}
 
 

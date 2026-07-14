@@ -106,17 +106,16 @@
 <body>
 
   <h1>Dashboard Optimasi Penjadwalan Fasilitas Gym</h1>
-  <p class="subtitle">Fuzzy Logic + Particle Swarm Optimization — dibangun dari paket <code>gym_scheduler</code></p>
-
+  
   <!-- ============ SECTION A: GAMBARAN DATASET ============ -->
   <div class="section">
-    <p class="section-title">Gambaran Dataset Asli</p>
+    <p class="section-title">Dataset</p>
     <div class="grid-4" id="datasetStats"></div>
   </div>
 
   <div class="section grid-2">
     <div class="panel">
-      <h2>Kunjungan "Present" per Bulan (2024)</h2>
+      <h2>Kunjungan kedatangan per Bulan</h2>
       <p class="desc">Dari seluruh riwayat kehadiran pada dataset asli.</p>
       <canvas id="monthlyChart" height="130"></canvas>
     </div>
@@ -129,7 +128,7 @@
 
   <!-- ============ SECTION B: PEMILIH SKENARIO ============ -->
   <div class="section">
-    <p class="section-title">Skenario Eksperimen (Bab III)</p>
+    <p class="section-title">Skenario Eksperimen</p>
     <div class="tabs" id="scenarioTabs"></div>
     <p class="scenario-desc" id="scenarioDesc"></p>
     <div id="infeasibleNote"></div>
@@ -154,7 +153,7 @@
 
   <!-- ============ SECTION E: TABEL FUZZY ============ -->
   <div class="section panel">
-    <h2>Tingkat Kepadatan per Slot (Fuzzy Logic)</h2>
+    <h2>Tingkat Kepadatan per Slot</h2>
     <p class="desc">Label = himpunan fuzzy dengan derajat keanggotaan tertinggi pada slot tsb (Rendah / Sedang / Tinggi).</p>
     <table id="fuzzyTable"></table>
     <div class="legend">
@@ -189,6 +188,45 @@
     </div>
   </div>
 
+  <!-- ============ SECTION G: PERBANDINGAN HARI KERJA VS AKHIR PEKAN ============ -->
+  <div class="section">
+    <p class="section-title">Perbandingan Jadwal: Hari Kerja vs Akhir Pekan</p>
+    <p class="desc" style="margin-bottom:14px;">
+      Pola kunjungan berbeda antara hari kerja dan akhir pekan (lihat <code>hourly_weights_by_daytype()</code>
+      di <code>gym_scheduler/data.py</code>), sehingga jam yang disarankan untuk dikurangi/ditambah bebannya
+      turut berbeda. Pipeline optimasi yang dijalankan persis sama seperti di atas, hanya bobot jamnya yang
+      dipisah per tipe hari.
+    </p>
+    <div class="tabs" id="dayTypeTabs"></div>
+    <div class="tabs" id="wwScenarioTabs" style="margin-top:-6px;"></div>
+    <div class="grid-4" id="wwKpiGrid" style="margin-bottom:14px;"></div>
+    <div class="panel" style="margin-bottom:14px;">
+      <h2>Okupansi per Slot Jam</h2>
+      <p class="desc">Sebelum vs sesudah optimasi, 1 pengulangan representatif. Garis putus-putus = kapasitas maksimum per slot.</p>
+      <canvas id="wwOccupancyChart" height="130"></canvas>
+    </div>
+    <div class="panel" style="margin-bottom:14px;">
+      <p id="wwRecSummaryText" style="font-size:13.5px; line-height:1.6; margin:0;"></p>
+    </div>
+    <div class="grid-2">
+      <div class="panel">
+        <h2>Jam yang Disarankan Dikurangi Bebannya</h2>
+        <p class="desc">Slot dengan okupansi tertinggi pada kondisi sebelum optimasi.</p>
+        <div id="wwRecReduceList"></div>
+      </div>
+      <div class="panel">
+        <h2>Jam yang Disarankan untuk Promosi / Diisi</h2>
+        <p class="desc">Slot dengan okupansi rendah (&lt; 30% kapasitas) -- berpotensi dioptimalkan.</p>
+        <div id="wwRecPromoteList"></div>
+      </div>
+    </div>
+    <div class="panel" style="margin-top:14px;">
+      <h2>Status Tiap Jam Operasional</h2>
+      <p class="desc">Dihitung dari kondisi sebelum optimasi (representatif), untuk tipe hari &amp; skenario terpilih.</p>
+      <table id="wwStatusTable"></table>
+    </div>
+  </div>
+
   <footer>
     <b>Catatan metodologi:</b> Booking disimulasikan dari pola jam kunjungan nyata pada
     <code>daily_gym_attendance_workout_data.csv</code> (lihat <code>gym_scheduler/data.py</code>).
@@ -211,6 +249,7 @@
    ditanam otomatis oleh build_dashboard.py -- lihat placeholder di bawah)
    ========================================================================== */
 const DATA = __DATA_JSON__;
+const WW_DATA = __WW_DATA_JSON__;
 const scenarioNames = Object.keys(DATA.scenarios);
 let activeScenario = scenarioNames[0];
 
@@ -376,16 +415,19 @@ function render() {
     `${scenario.repeats}x pengulangan · total kapasitas fasilitas = ${totalCapacity} booking/hari`;
 
   const noteEl = document.getElementById("infeasibleNote");
-  if (scenario.params.n_bookings > totalCapacity) {
-    noteEl.innerHTML = `<div class="infeasible-note">
-      Catatan: skenario ini sengaja dirancang dengan permintaan (${scenario.params.n_bookings} booking)
-      melebihi total kapasitas fasilitas sepanjang hari (${totalCapacity} booking). Karena itu, sejumlah
-      konflik akan selalu tersisa walau sudah dioptimasi — ini keterbatasan kapasitas fasilitas itu
-      sendiri, bukan kegagalan algoritma PSO.
-    </div>`;
-  } else {
+    /*
+    if (scenario.params.n_bookings > totalCapacity) {
+      noteEl.innerHTML = `<div class="infeasible-note">
+        Catatan: skenario ini sengaja dirancang dengan permintaan (${scenario.params.n_bookings} booking)
+        melebihi total kapasitas fasilitas sepanjang hari (${totalCapacity} booking). Karena itu, sejumlah
+        konflik akan selalu tersisa walau sudah dioptimasi — ini keterbatasan kapasitas fasilitas itu
+        sendiri, bukan kegagalan algoritma PSO.
+      </div>`;
+    } else {
+      noteEl.innerHTML = "";
+    }
+    */
     noteEl.innerHTML = "";
-  }
 
   // --- KPI cards ---
   const kpiGrid = document.getElementById("kpiGrid");
@@ -484,6 +526,153 @@ document.getElementById("capText").textContent = DATA.config.capacity_per_slot;
 document.getElementById("repeatsText").textContent = Object.values(DATA.scenarios)[0].repeats;
 
 render();
+
+/* ==========================================================================
+   SECTION G -- Perbandingan Hari Kerja vs Akhir Pekan
+   (memakai ulang kpiDefs & style yang sama dengan Bagian B-F di atas;
+   DOM id diberi awalan "ww" supaya tidak bentrok dengan chart utama)
+   ========================================================================== */
+const dayTypeKeys = Object.keys(WW_DATA.day_types);      // ["weekday", "weekend"]
+let activeDayType = dayTypeKeys[0];
+let activeWwScenario = Object.keys(WW_DATA.day_types[activeDayType])[0];
+
+const dayTypeTabsEl = document.getElementById("dayTypeTabs");
+dayTypeKeys.forEach(dt => {
+  const btn = document.createElement("button");
+  btn.className = "tab-btn" + (dt === activeDayType ? " active" : "");
+  btn.textContent = WW_DATA.labels[dt];
+  btn.onclick = () => { activeDayType = dt; wwRender(); };
+  btn.dataset.key = dt;
+  dayTypeTabsEl.appendChild(btn);
+});
+
+const wwScenarioTabsEl = document.getElementById("wwScenarioTabs");
+Object.keys(WW_DATA.day_types[activeDayType]).forEach(name => {
+  const btn = document.createElement("button");
+  btn.className = "tab-btn" + (name === activeWwScenario ? " active" : "");
+  btn.textContent = name.split(" (")[0];
+  btn.onclick = () => { activeWwScenario = name; wwRender(); };
+  btn.dataset.name = name;
+  wwScenarioTabsEl.appendChild(btn);
+});
+
+let wwOccupancyChart;
+function wwInitChart(scenario) {
+  const hours = DATA.config.operating_hours.map(h => h.toString().padStart(2,"0") + ":00");
+  wwOccupancyChart = new Chart(document.getElementById("wwOccupancyChart"), {
+    type: "bar",
+    data: {
+      labels: hours,
+      datasets: [
+        { label: "Sebelum", data: scenario.demand_before, backgroundColor: "#C2664B", borderRadius: 3 },
+        { label: "Sesudah", data: scenario.demand_after, backgroundColor: "#0D8C72", borderRadius: 3 },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: "bottom" } },
+      scales: { y: { beginAtZero:true, title:{ display:true, text:"Jumlah booking" } } },
+    },
+    plugins: [{
+      id: "wwCapacityLine",
+      afterDraw(chart) {
+        const { ctx, chartArea, scales } = chart;
+        const y = scales.y.getPixelForValue(DATA.config.capacity_per_slot);
+        ctx.save();
+        ctx.strokeStyle = "#a8432a";
+        ctx.setLineDash([6,4]);
+        ctx.beginPath(); ctx.moveTo(chartArea.left,y); ctx.lineTo(chartArea.right,y); ctx.stroke();
+        ctx.restore();
+      },
+    }],
+  });
+}
+function wwUpdateChart(scenario) {
+  wwOccupancyChart.data.datasets[0].data = scenario.demand_before;
+  wwOccupancyChart.data.datasets[1].data = scenario.demand_after;
+  wwOccupancyChart.update();
+}
+
+function wwRender() {
+  [...dayTypeTabsEl.children].forEach(b => b.classList.toggle("active", b.dataset.key === activeDayType));
+
+  const namesForType = Object.keys(WW_DATA.day_types[activeDayType]);
+  if (!namesForType.includes(activeWwScenario)) activeWwScenario = namesForType[0];
+  [...wwScenarioTabsEl.children].forEach(b => b.classList.toggle("active", b.dataset.name === activeWwScenario));
+
+  const scenario = WW_DATA.day_types[activeDayType][activeWwScenario];
+
+  const wwKpiGrid = document.getElementById("wwKpiGrid");
+  wwKpiGrid.innerHTML = "";
+  kpiDefs.forEach(def => {
+    const beforeMean = scenario.summary[`${def.beforeKey}_mean`];
+    const beforeStd = scenario.summary[`${def.beforeKey}_std`];
+    const afterMean = scenario.summary[`${def.afterKey}_mean`];
+    const afterStd = scenario.summary[`${def.afterKey}_std`];
+    const improved = def.lowerIsBetter ? afterMean < beforeMean : afterMean > beforeMean;
+    const pctChange = beforeMean === 0 ? 0 : Math.round(((afterMean - beforeMean) / beforeMean) * 100);
+
+    const card = document.createElement("div");
+    card.className = "kpi-card";
+    card.innerHTML = `
+      <div class="kpi-label">${def.label}</div>
+      <div class="kpi-row">
+        <span class="kpi-before">${beforeMean}${def.unit}</span>
+        <span class="kpi-arrow">&rarr;</span>
+        <span class="kpi-after">${afterMean}${def.unit}</span>
+      </div>
+      <div class="kpi-std">± std: ${beforeStd} &rarr; ${afterStd} (dari ${scenario.repeats}x pengulangan)</div>
+      <span class="kpi-delta ${improved ? "delta-good" : "delta-bad"}">
+        ${pctChange > 0 ? "+" : ""}${pctChange}% ${improved ? "membaik" : "memburuk"}
+      </span>`;
+    wwKpiGrid.appendChild(card);
+  });
+
+  if (!wwOccupancyChart) wwInitChart(scenario); else wwUpdateChart(scenario);
+
+  const rec = scenario.recommendations;
+  document.getElementById("wwRecSummaryText").textContent = rec.summary_text;
+
+  const wwReduceList = document.getElementById("wwRecReduceList");
+  if (rec.redistribution.jam_dikurangi.length === 0) {
+    wwReduceList.innerHTML = `<p class="desc" style="margin:0;">Tidak ada jam yang perlu dikurangi bebannya.</p>`;
+  } else {
+    wwReduceList.innerHTML = rec.redistribution.jam_dikurangi.map(r => `
+      <div class="rec-item sev-3">
+        <span class="rec-hour">${r.hour.toString().padStart(2,"0")}:00</span>
+        <span class="rec-delta">${r.delta} booking dipindah keluar</span>
+      </div>`).join("");
+  }
+
+  const wwPromoteList = document.getElementById("wwRecPromoteList");
+  const wwPromoteHours = rec.status_per_slot.filter(s => s.status === "Kurang Optimal");
+  if (wwPromoteHours.length === 0) {
+    wwPromoteList.innerHTML = `<p class="desc" style="margin:0;">Tidak ada jam dengan okupansi rendah pada skenario ini.</p>`;
+  } else {
+    wwPromoteList.innerHTML = wwPromoteHours.map(s => `
+      <div class="rec-item sev-1">
+        <span class="rec-hour">${s.hour.toString().padStart(2,"0")}:00</span>
+        <span class="rec-delta">okupansi ${Math.round(s.ratio*100)}% dari kapasitas</span>
+      </div>`).join("");
+  }
+
+  const wwStatusTable = document.getElementById("wwStatusTable");
+  const wwSorted = [...rec.status_per_slot].sort((a,b) => b.severity - a.severity);
+  let wwSrows = "<tr><th>Jam</th><th>Demand</th><th>Rasio</th><th>Status</th><th style='text-align:left'>Saran Tindakan</th></tr>";
+  wwSorted.forEach(s => {
+    const cls = s.status.replace(" ", "-");
+    wwSrows += `<tr>
+      <td><b>${s.hour.toString().padStart(2,"0")}:00</b></td>
+      <td>${s.demand}</td>
+      <td>${Math.round(s.ratio*100)}%</td>
+      <td><span class="status-badge status-${cls}">${s.status}</span></td>
+      <td style="text-align:left; color:var(--muted);">${s.saran}</td>
+    </tr>`;
+  });
+  wwStatusTable.innerHTML = wwSrows;
+}
+
+wwRender();
 </script>
 </body>
 </html>

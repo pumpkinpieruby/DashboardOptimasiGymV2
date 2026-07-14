@@ -18,7 +18,7 @@ EMPTY_THRESHOLD_RATIO = 0.4    # slot dianggap "kosong" jika terisi < 40% kapasi
 BUSY_DAY_BOOKINGS = 80         # jumlah booking pada skenario "hari sibuk"
 PEAK_SKEW = 1.8                # memperbesar kontras jam ramai vs sepi
 
-# --- Parameter PSO (sesuai Bab II skripsi) -------------------------------
+# --- Parameter PSO -------------------------------
 SWARM_SIZE = 25
 ITERATIONS = 60
 W = 0.7     # inertia weight
