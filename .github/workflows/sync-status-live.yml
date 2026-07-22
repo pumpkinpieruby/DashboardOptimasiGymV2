@@ -1,0 +1,44 @@
+name: Sync Status Live Gym
+
+on:
+  # Jalan otomatis sesuai jadwal -- cron di GitHub Actions SELALU pakai UTC.
+  # Contoh di bawah: tiap 15 menit, SEPANJANG hari (24 jam) -- paling aman
+  # & gampang dites dulu. Kalau mau dihemat supaya cuma jalan pas jam
+  # operasional gym (05:00-22:00 WIB = 22:00-15:00 UTC, nyebrang hari),
+  # ganti baris cron di bawah ini jadi 2 baris terpisah, lihat README.md
+  # bagian "Menghemat menit Actions (opsional)".
+  schedule:
+    - cron: "*/15 * * * *"
+
+  # Biar bisa di-klik manual dari tab "Actions" di GitHub (buat testing,
+  # tanpa perlu nunggu jadwal cron).
+  workflow_dispatch: {}
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install -r requirements-sheets.txt
+
+      - name: Tulis kredensial service account dari Secret
+        run: echo "$GOOGLE_SERVICE_ACCOUNT_JSON" > service_account.json
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+
+      - name: Jalankan sync_google_sheet.py
+        run: python scripts/sync_google_sheet.py
+
+      - name: Hapus file kredensial
+        if: always()
+        run: rm -f service_account.json
