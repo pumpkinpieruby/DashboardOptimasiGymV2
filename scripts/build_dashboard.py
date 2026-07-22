@@ -14,9 +14,10 @@ from pathlib import Path
 
 DATA_JSON = Path("experiment_results") / "dashboard_data.json"
 WW_DATA_JSON = Path("experiment_results") / "weekday_weekend_data.json"
-TEMPLATE_HTML = Path("dashboard_template.html")
-CHARTJS_LIB = Path("vendor_chart.umd.min.js")   # library Chart.js (MIT license), ditanam langsung
-OUTPUT_HTML = Path("dashboard_optimasi_gym.html")
+TEMPLATE_HTML = Path("dashboard") / "dashboard_template.html"
+CHARTJS_LIB = Path("dashboard") / "vendor_chart.umd.min.js"   # library Chart.js (MIT license), ditanam langsung
+GYM_SCHEDULER_JS = Path("dashboard") / "gym_scheduler.js"     # port JS dari gym_scheduler/ -- fitur "upload & jalankan"
+OUTPUT_HTML = Path("dashboard") / "dashboard_optimasi_gym.html"
 
 with open(DATA_JSON, "r", encoding="utf-8") as f:
     data = json.load(f)
@@ -30,10 +31,14 @@ with open(TEMPLATE_HTML, "r", encoding="utf-8") as f:
 with open(CHARTJS_LIB, "r", encoding="utf-8") as f:
     chartjs_code = f.read()
 
-# Chart.js DITANAM langsung ke dalam file (bukan <script src="https://cdn...">)
-# supaya dashboard tetap jalan walau dibuka tanpa internet atau di jaringan
-# yang memblokir CDN (mis. beberapa jaringan kampus/kantor).
+with open(GYM_SCHEDULER_JS, "r", encoding="utf-8") as f:
+    gym_scheduler_js_code = f.read()
+
+# Chart.js & gym_scheduler.js DITANAM langsung ke dalam file (bukan <script
+# src="...">) supaya dashboard tetap jalan walau dibuka tanpa internet atau
+# di jaringan yang memblokir CDN (mis. beberapa jaringan kampus/kantor).
 final_html = template.replace("__CHARTJS_LIB__", chartjs_code)
+final_html = final_html.replace("__GYM_SCHEDULER_JS__", gym_scheduler_js_code)
 final_html = final_html.replace("__DATA_JSON__", json.dumps(data))
 final_html = final_html.replace("__WW_DATA_JSON__", json.dumps(ww_data))
 

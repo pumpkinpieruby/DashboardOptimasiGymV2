@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <title>Dashboard Optimasi Penjadwalan Gym — Fuzzy Logic + PSO</title>
 <script>__CHARTJS_LIB__</script>
+<script>__GYM_SCHEDULER_JS__</script>
 <style>
   /* ------------------------------------------------------------------ */
   /* GAYA DASAR -- warna before/after SENGAJA disamakan dengan          */
@@ -101,6 +102,12 @@
     .grid-4{ grid-template-columns:repeat(2,1fr); }
     .grid-2{ grid-template-columns:1fr; }
   }
+
+  /* --- upload file & jalankan optimasi --- */
+  .upload-row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:4px; }
+  input[type="file"]{ font-size:12.5px; }
+  button.tab-btn{ font-family:inherit; }
+  button.tab-btn:disabled{ opacity:.5; cursor:default; }
 </style>
 </head>
 <body>
@@ -192,10 +199,7 @@
   <div class="section">
     <p class="section-title">Perbandingan Jadwal: Hari Kerja vs Akhir Pekan</p>
     <p class="desc" style="margin-bottom:14px;">
-      Pola kunjungan berbeda antara hari kerja dan akhir pekan (lihat <code>hourly_weights_by_daytype()</code>
-      di <code>gym_scheduler/data.py</code>), sehingga jam yang disarankan untuk dikurangi/ditambah bebannya
-      turut berbeda. Pipeline optimasi yang dijalankan persis sama seperti di atas, hanya bobot jamnya yang
-      dipisah per tipe hari.
+      Pola kunjungan pada hari kerja dan akhir pekan berbeda. Oleh karena itu, sistem memberikan rekomendasi jam booking yang berbeda sesuai dengan tipe hari agar penggunaan gym lebih merata.
     </p>
     <div class="tabs" id="dayTypeTabs"></div>
     <div class="tabs" id="wwScenarioTabs" style="margin-top:-6px;"></div>
@@ -227,8 +231,100 @@
     </div>
   </div>
 
+  <!-- ============ SECTION H: COBA SENDIRI -- UPLOAD FILE ============ -->
+  <div class="section">
+    <p class="section-title">Coba Sendiri — Upload File &amp; Jalankan Optimasi</p>
+    <div class="panel" style="margin-bottom:14px;">
+      <p class="desc" style="margin-bottom:14px;">
+        Coba pakai data kamu sendiri di sini. Semua proses berjalan langsung di browser kamu saat
+        file di-upload — tidak lewat internet, tidak ada data yang dikirim ke mana-mana atau
+        disimpan di tempat lain. Sistem ini menghitung ulang dengan cara yang sama persis seperti
+        contoh hasil di atas, jadi bisa langsung dipakai untuk data gym yang sebenarnya. Hasilnya
+        bisa sedikit berbeda tiap kali tombol ditekan — itu wajar, karena sistem ini memang mencoba
+        beberapa kemungkinan pengaturan jadwal sebelum memilih yang terbaik.
+      </p>
+      <div class="tabs" id="uploadModeTabs"></div>
+
+      <div id="uploadModeBooking">
+        <p class="desc">
+          Punya catatan booking/kunjungan asli? Upload di sini. Filenya cukup berisi 2 kolom
+          dengan nama persis <code>tanggal_booking</code> (contoh: 2026-07-14) dan
+          <code>jam_booking</code> (contoh: 8 atau "08:00") — satu baris untuk satu orang yang
+          datang.
+        </p>
+        <div class="upload-row">
+          <input type="file" id="uploadBookingFile" accept=".csv" />
+          <button id="uploadBookingRun" class="tab-btn">Jalankan Optimasi</button>
+        </div>
+      </div>
+
+      <div id="uploadModeDataset" style="display:none;">
+        <p class="desc">
+          Belum punya data booking, tapi punya data kunjungan harian? Upload di sini. Filenya
+          minimal berisi kolom <code>check_in_time</code> (jam check-in) dan
+          <code>attendance_status</code> (hadir/tidak). Sistem akan melihat jam-jam mana yang
+          biasanya ramai dari data itu, lalu membuat contoh skenario "hari sibuk" berdasarkan pola
+          tersebut untuk dicoba diatur ulang jadwalnya. Jadi hasilnya adalah simulasi berdasarkan
+          pola kunjungan di file kamu, bukan angka booking yang benar-benar terjadi.
+        </p>
+        <div class="upload-row">
+          <input type="file" id="uploadDatasetFile" accept=".csv" />
+          <label style="font-size:12.5px; color:var(--muted);">
+            Jumlah booking: <input type="number" id="uploadNBookings" value="80" min="1" style="width:60px;" />
+          </label>
+          <button id="uploadDatasetRun" class="tab-btn">Generate Skenario &amp; Jalankan Optimasi</button>
+        </div>
+      </div>
+
+      <p id="uploadError" style="color:#a8432a; font-size:12.5px; margin-top:10px; display:none;"></p>
+      <p id="uploadStatus" style="color:var(--muted); font-size:12.5px; margin-top:10px; display:none;"></p>
+    </div>
+
+    <div id="uploadResults" style="display:none;">
+      <div class="grid-4" id="uploadKpiGrid" style="margin-bottom:14px;"></div>
+      <div class="grid-2" style="margin-bottom:14px;">
+        <div class="panel">
+          <h2>Okupansi per Slot Jam — Sebelum vs Sesudah</h2>
+          <p class="desc">Dari file yang kamu upload. Garis putus-putus = kapasitas maksimum per slot.</p>
+          <canvas id="uploadOccupancyChart" height="130"></canvas>
+        </div>
+        <div class="panel">
+          <h2>Konvergensi PSO</h2>
+          <p class="desc">Nilai fitness gbest per iterasi, dari run barusan.</p>
+          <canvas id="uploadConvergenceChart" height="150"></canvas>
+        </div>
+      </div>
+      <div class="panel" style="margin-bottom:14px;">
+        <h2>Tingkat Kepadatan per Slot</h2>
+        <table id="uploadFuzzyTable"></table>
+        <div class="legend">
+          <span><span class="dot" style="background:#0D8C72"></span>Rendah</span>
+          <span><span class="dot" style="background:#b0752b"></span>Sedang</span>
+          <span><span class="dot" style="background:#a8432a"></span>Tinggi</span>
+        </div>
+      </div>
+      <div class="panel" style="margin-bottom:14px;">
+        <p id="uploadRecSummaryText" style="font-size:13.5px; line-height:1.6; margin:0;"></p>
+      </div>
+      <div class="grid-2">
+        <div class="panel">
+          <h2>Jam yang Disarankan Dikurangi Bebannya</h2>
+          <div id="uploadRecReduceList"></div>
+        </div>
+        <div class="panel">
+          <h2>Jam yang Disarankan untuk Promosi / Diisi</h2>
+          <div id="uploadRecPromoteList"></div>
+        </div>
+      </div>
+      <div class="panel" style="margin-top:14px;">
+        <h2>Status Tiap Jam Operasional</h2>
+        <table id="uploadStatusTable"></table>
+      </div>
+    </div>
+  </div>
+
   <footer>
-    <b>Catatan metodologi:</b> Booking disimulasikan dari pola jam kunjungan nyata pada
+    <!-- <b>Catatan metodologi:</b> Booking disimulasikan dari pola jam kunjungan nyata pada
     <code>daily_gym_attendance_workout_data.csv</code> (lihat <code>gym_scheduler/data.py</code>).
     Kondisi <b>Sebelum</b> = booking pada slot pilihan asli tanpa pengaturan. <b>Sesudah</b> = hasil
     PSO yang memindah booking pada slot yang melebihi kapasitas ke slot lain, dipandu penalti
@@ -240,7 +336,7 @@
     Setiap skenario dijalankan <span id="repeatsText"></span>x pengulangan (<code>run_experiments.py</code>); kartu KPI
     menampilkan rata-rata ± standar deviasi. Grafik statis untuk lampiran skripsi tersedia di folder
     <code>experiment_results/*.png</code> (dihasilkan skrip yang sama). Seluruh kode model ada di folder
-    <code>gym_scheduler/</code> dan tidak diubah untuk membuat dashboard ini.
+    <code>gym_scheduler/</code> dan tidak diubah untuk membuat dashboard ini. -->
   </footer>
 
 <script>
@@ -515,16 +611,10 @@ function render() {
 }
 
 /* ==========================================================================
-   Isi catatan metodologi di footer & jalankan render pertama kali
+   Jalankan render pertama kali
+   (catatan: span #wText, #c1Text, dst tidak lagi diisi di sini karena
+   blok <footer> yang memuatnya sengaja di-comment-out di HTML di atas)
    ========================================================================== */
-document.getElementById("wText").textContent = DATA.config.w;
-document.getElementById("c1Text").textContent = DATA.config.c1;
-document.getElementById("c2Text").textContent = DATA.config.c2;
-document.getElementById("swarmText").textContent = DATA.config.swarm_size;
-document.getElementById("iterText").textContent = DATA.config.iterations;
-document.getElementById("capText").textContent = DATA.config.capacity_per_slot;
-document.getElementById("repeatsText").textContent = Object.values(DATA.scenarios)[0].repeats;
-
 render();
 
 /* ==========================================================================
@@ -673,6 +763,234 @@ function wwRender() {
 }
 
 wwRender();
+
+/* ==========================================================================
+   SECTION H -- Upload file & jalankan optimasi langsung di browser.
+   Pakai GymScheduler dari gym_scheduler.js (ditanam oleh build_dashboard.py
+   sama seperti Chart.js) -- TIDAK menyentuh DATA/WW_DATA statis di atas.
+   ========================================================================== */
+const uploadModes = [
+  { key: "booking", label: "Catatan Booking" },
+  { key: "dataset", label: "Data Kunjungan" },
+];
+let activeUploadMode = "booking";
+const uploadModeTabsEl = document.getElementById("uploadModeTabs");
+uploadModes.forEach(m => {
+  const btn = document.createElement("button");
+  btn.className = "tab-btn" + (m.key === activeUploadMode ? " active" : "");
+  btn.textContent = m.label;
+  btn.dataset.key = m.key;
+  btn.onclick = () => {
+    activeUploadMode = m.key;
+    [...uploadModeTabsEl.children].forEach(b => b.classList.toggle("active", b.dataset.key === activeUploadMode));
+    document.getElementById("uploadModeBooking").style.display = activeUploadMode === "booking" ? "" : "none";
+    document.getElementById("uploadModeDataset").style.display = activeUploadMode === "dataset" ? "" : "none";
+  };
+  uploadModeTabsEl.appendChild(btn);
+});
+
+function uploadShowError(msg) {
+  const el = document.getElementById("uploadError");
+  el.textContent = msg;
+  el.style.display = "block";
+}
+function uploadClearError() {
+  document.getElementById("uploadError").style.display = "none";
+}
+function uploadSetStatus(msg) {
+  const el = document.getElementById("uploadStatus");
+  if (!msg) { el.style.display = "none"; return; }
+  el.textContent = msg;
+  el.style.display = "block";
+}
+function readFileAsText(fileInput) {
+  return new Promise((resolve, reject) => {
+    const file = fileInput.files[0];
+    if (!file) { reject(new Error("Belum ada file yang dipilih.")); return; }
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(new Error("Gagal membaca file."));
+    reader.readAsText(file);
+  });
+}
+
+let uploadOccupancyChart, uploadConvergenceChart;
+
+function uploadRenderResult(result, sourceLabel) {
+  document.getElementById("uploadResults").style.display = "";
+
+  // --- KPI cards ---
+  const kpiGrid = document.getElementById("uploadKpiGrid");
+  kpiGrid.innerHTML = "";
+  const kpiUploadDefs = [
+    { label: "Konflik Booking", before: result.before.metrics.conflicts, after: result.after.metrics.conflicts, unit: "", lowerIsBetter: true },
+    { label: "Utilisasi Slot", before: result.before.metrics.utilization_pct, after: result.after.metrics.utilization_pct, unit: "%", lowerIsBetter: false },
+    { label: "Slot Kosong", before: result.before.metrics.empty_slot_pct, after: result.after.metrics.empty_slot_pct, unit: "%", lowerIsBetter: true },
+    { label: "Rata-rata Waktu Tunggu", before: result.before.metrics.avg_wait_minutes, after: result.after.metrics.avg_wait_minutes, unit: " menit", lowerIsBetter: true },
+  ];
+  kpiUploadDefs.forEach(def => {
+    const improved = def.lowerIsBetter ? def.after < def.before : def.after > def.before;
+    const pctChange = def.before === 0 ? 0 : Math.round(((def.after - def.before) / def.before) * 100);
+    const card = document.createElement("div");
+    card.className = "kpi-card";
+    card.innerHTML = `
+      <div class="kpi-label">${def.label}</div>
+      <div class="kpi-row">
+        <span class="kpi-before">${def.before}${def.unit}</span>
+        <span class="kpi-arrow">&rarr;</span>
+        <span class="kpi-after">${def.after}${def.unit}</span>
+      </div>
+      <span class="kpi-delta ${improved ? "delta-good" : "delta-bad"}">
+        ${pctChange > 0 ? "+" : ""}${pctChange}% ${improved ? "membaik" : "memburuk"}
+      </span>`;
+    kpiGrid.appendChild(card);
+  });
+
+  // --- charts ---
+  const hours = result.operating_hours.map(h => h.toString().padStart(2,"0") + ":00");
+  if (!uploadOccupancyChart) {
+    uploadOccupancyChart = new Chart(document.getElementById("uploadOccupancyChart"), {
+      type: "bar",
+      data: { labels: hours, datasets: [
+        { label: "Sebelum", data: result.before.demand, backgroundColor: "#C2664B", borderRadius: 3 },
+        { label: "Sesudah", data: result.after.demand, backgroundColor: "#0D8C72", borderRadius: 3 },
+      ]},
+      options: { responsive:true, plugins:{legend:{position:"bottom"}},
+                 scales:{y:{beginAtZero:true, title:{display:true,text:"Jumlah booking"}}} },
+      plugins: [{ id:"uploadCapacityLine", afterDraw(chart){
+        const { ctx, chartArea, scales } = chart;
+        const y = scales.y.getPixelForValue(GymScheduler.config.CAPACITY_PER_SLOT);
+        ctx.save(); ctx.strokeStyle = "#a8432a"; ctx.setLineDash([6,4]);
+        ctx.beginPath(); ctx.moveTo(chartArea.left,y); ctx.lineTo(chartArea.right,y); ctx.stroke();
+        ctx.restore();
+      }}],
+    });
+  } else {
+    uploadOccupancyChart.data.labels = hours;
+    uploadOccupancyChart.data.datasets[0].data = result.before.demand;
+    uploadOccupancyChart.data.datasets[1].data = result.after.demand;
+    uploadOccupancyChart.update();
+  }
+
+  if (!uploadConvergenceChart) {
+    uploadConvergenceChart = new Chart(document.getElementById("uploadConvergenceChart"), {
+      type: "line",
+      data: { labels: result.pso_history.map((_,i)=>i), datasets: [
+        { label:"Fitness (gbest)", data: result.pso_history, borderColor:"#1f6f5c",
+          backgroundColor:"rgba(31,111,92,0.08)", fill:true, tension:0.25, pointRadius:0 },
+      ]},
+      options: { responsive:true, plugins:{legend:{display:false}},
+                 scales:{ x:{title:{display:true,text:"Iterasi"}}, y:{title:{display:true,text:"Fitness"}} } },
+    });
+  } else {
+    uploadConvergenceChart.data.labels = result.pso_history.map((_,i)=>i);
+    uploadConvergenceChart.data.datasets[0].data = result.pso_history;
+    uploadConvergenceChart.update();
+  }
+
+  // --- tabel fuzzy ---
+  const table = document.getElementById("uploadFuzzyTable");
+  let rows = "<tr><th>Jam</th>";
+  result.operating_hours.forEach(h => rows += `<th>${h.toString().padStart(2,"0")}:00</th>`);
+  rows += "</tr><tr><td><b>Sebelum</b></td>";
+  result.before.fuzzy.forEach(f => rows += `<td><span class="tag tag-${f.label}">${f.label}</span></td>`);
+  rows += "</tr><tr><td><b>Sesudah</b></td>";
+  result.after.fuzzy.forEach(f => rows += `<td><span class="tag tag-${f.label}">${f.label}</span></td>`);
+  rows += "</tr>";
+  table.innerHTML = rows;
+
+  // --- rekomendasi ---
+  const rec = GymScheduler.buildRecommendations(result.before, result.after);
+  document.getElementById("uploadRecSummaryText").textContent = (sourceLabel ? sourceLabel + " " : "") + rec.summary_text;
+
+  const reduceList = document.getElementById("uploadRecReduceList");
+  reduceList.innerHTML = rec.redistribution.jam_dikurangi.length === 0
+    ? `<p class="desc" style="margin:0;">Tidak ada jam yang perlu dikurangi bebannya.</p>`
+    : rec.redistribution.jam_dikurangi.map(r => `
+        <div class="rec-item sev-3">
+          <span class="rec-hour">${r.hour.toString().padStart(2,"0")}:00</span>
+          <span class="rec-delta">${r.delta} booking dipindah keluar</span>
+        </div>`).join("");
+
+  const promoteList = document.getElementById("uploadRecPromoteList");
+  const promoteHours = rec.status_per_slot.filter(s => s.status === "Kurang Optimal");
+  promoteList.innerHTML = promoteHours.length === 0
+    ? `<p class="desc" style="margin:0;">Tidak ada jam dengan okupansi rendah pada hasil ini.</p>`
+    : promoteHours.map(s => `
+        <div class="rec-item sev-1">
+          <span class="rec-hour">${s.hour.toString().padStart(2,"0")}:00</span>
+          <span class="rec-delta">okupansi ${Math.round(s.ratio*100)}% dari kapasitas</span>
+        </div>`).join("");
+
+  const statusTable = document.getElementById("uploadStatusTable");
+  const sortedStatus = [...rec.status_per_slot].sort((a,b) => b.severity - a.severity);
+  let srows = "<tr><th>Jam</th><th>Demand</th><th>Rasio</th><th>Status</th><th style='text-align:left'>Saran Tindakan</th></tr>";
+  sortedStatus.forEach(s => {
+    const cls = s.status.replace(" ", "-");
+    srows += `<tr>
+      <td><b>${s.hour.toString().padStart(2,"0")}:00</b></td>
+      <td>${s.demand}</td>
+      <td>${Math.round(s.ratio*100)}%</td>
+      <td><span class="status-badge status-${cls}">${s.status}</span></td>
+      <td style="text-align:left; color:var(--muted);">${s.saran}</td>
+    </tr>`;
+  });
+  statusTable.innerHTML = srows;
+}
+
+document.getElementById("uploadBookingRun").onclick = async () => {
+  uploadClearError();
+  const btn = document.getElementById("uploadBookingRun");
+  try {
+    btn.disabled = true;
+    uploadSetStatus("Membaca file...");
+    const text = await readFileAsText(document.getElementById("uploadBookingFile"));
+    const { rows } = GymScheduler.parseCSV(text);
+    const { cleaned, nDropped } = GymScheduler.loadRealBookings(rows, "tanggal_booking", "jam_booking");
+    if (cleaned.length === 0) {
+      throw new Error("Tidak ada baris valid di file ini -- cek nama kolom (tanggal_booking, jam_booking) atau isi filenya.");
+    }
+    const bookingHours = GymScheduler.bookingHoursFromLog(cleaned);
+    uploadSetStatus(`Menjalankan PSO untuk ${bookingHours.length} booking` +
+      `${nDropped ? ` (${nDropped} baris dilewati karena tidak valid)` : ""}...`);
+    // beri browser kesempatan render status dulu, baru loop PSO (blocking) jalan
+    await new Promise(r => setTimeout(r, 30));
+    const result = GymScheduler.optimizeSchedule(bookingHours, true);
+    uploadRenderResult(result, `Dari ${bookingHours.length} booking pada file yang diupload:`);
+    uploadSetStatus(`Selesai -- ${bookingHours.length} booking diproses` +
+      `${nDropped ? `, ${nDropped} baris dilewati` : ""}.`);
+  } catch (e) {
+    uploadShowError(e.message);
+    uploadSetStatus("");
+  } finally {
+    btn.disabled = false;
+  }
+};
+
+document.getElementById("uploadDatasetRun").onclick = async () => {
+  uploadClearError();
+  const btn = document.getElementById("uploadDatasetRun");
+  try {
+    btn.disabled = true;
+    uploadSetStatus("Membaca file...");
+    const text = await readFileAsText(document.getElementById("uploadDatasetFile"));
+    const { rows } = GymScheduler.parseCSV(text);
+    const dataset = GymScheduler.loadDataset(rows);
+    const weights = GymScheduler.hourlyWeights(dataset);
+    const nBookings = parseInt(document.getElementById("uploadNBookings").value, 10) || GymScheduler.config.BUSY_DAY_BOOKINGS;
+    const bookingHours = GymScheduler.generateBusyDayBookings(weights, nBookings, GymScheduler.config.PEAK_SKEW);
+    uploadSetStatus(`Menjalankan PSO untuk ${bookingHours.length} booking (dari skenario yang di-generate)...`);
+    await new Promise(r => setTimeout(r, 30));
+    const result = GymScheduler.optimizeSchedule(bookingHours, true);
+    uploadRenderResult(result, `Skenario ${bookingHours.length} booking di-generate dari pola kunjungan pada file yang diupload:`);
+    uploadSetStatus(`Selesai -- skenario di-generate dari ${dataset.length} baris data kunjungan.`);
+  } catch (e) {
+    uploadShowError(e.message);
+    uploadSetStatus("");
+  } finally {
+    btn.disabled = false;
+  }
+};
 </script>
 </body>
 </html>

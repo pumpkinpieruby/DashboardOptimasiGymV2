@@ -23,13 +23,6 @@ from .fuzzy_logic import fuzzy_high_penalty
 
 
 def fitness(slot_indices: List[int], base_demand: List[int]) -> float:
-    """Fungsi objektif yang diminimalkan PSO.
-
-    Terdiri dari 3 komponen:
-      1. Pelanggaran mutual exclusion (kapasitas terlampaui) -- bobot terbesar
-      2. Variansi beban antar slot (semakin merata semakin baik)
-      3. Penalti fuzzy: menghindari slot yang berstatus 'Tinggi'
-    """
     # Simulasikan: KALAU tebakan solusi (slot_indices) ini diterapkan,
     # jadi seperti apa demand akhirnya? base_demand di-copy dulu supaya
     # data asli tidak ikut berubah (base_demand dipakai ulang untuk

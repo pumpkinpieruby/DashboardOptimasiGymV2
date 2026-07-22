@@ -109,8 +109,8 @@
         "wait_before_std": 3.59,
         "wait_after_mean": 0.0,
         "wait_after_std": 0.0,
-        "time_ms_mean": 34.28,
-        "time_ms_std": 9.6
+        "time_ms_mean": 15.4,
+        "time_ms_std": 3.79
       },
       "convergence": [
         24.66666666666667,
@@ -748,8 +748,8 @@
         "wait_before_std": 2.34,
         "wait_after_mean": 0.0,
         "wait_after_std": 0.0,
-        "time_ms_mean": 67.18,
-        "time_ms_std": 7.84
+        "time_ms_mean": 39.27,
+        "time_ms_std": 5.45
       },
       "convergence": [
         749.6111111111111,
@@ -1443,8 +1443,8 @@
         "wait_before_std": 1.67,
         "wait_after_mean": 20.0,
         "wait_after_std": 0.0,
-        "time_ms_mean": 139.72,
-        "time_ms_std": 29.69
+        "time_ms_mean": 90.12,
+        "time_ms_std": 12.85
       },
       "convergence": [
         4061.5308641975307,

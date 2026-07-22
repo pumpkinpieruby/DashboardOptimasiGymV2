@@ -16,7 +16,10 @@ Jalankan SETELAH export_dashboard_data.py, SEBELUM build_dashboard.py:
 """
 
 import json
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # biar gym_scheduler ketemu dari scripts/
 
 from gym_scheduler import config
 from gym_scheduler.data import load_dataset, hourly_weights_by_daytype
@@ -56,7 +59,7 @@ def build_scenario_payload(name, params, weights, base_seed):
 
 
 def main():
-    df = load_dataset("daily_gym_attendance_workout_data.csv")
+    df = load_dataset("data/daily_gym_attendance_workout_data.csv")
     weights_by_type = hourly_weights_by_daytype(df)
 
     payload = {"labels": DAY_TYPE_LABELS, "day_types": {}}

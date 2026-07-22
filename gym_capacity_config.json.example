@@ -1,0 +1,6 @@
+{
+  "_comment": "Salin file ini jadi 'gym_capacity_config.json' (buang koma & baris komentar ini kalau JSON tidak mengizinkan), lalu isi dengan angka ASLI dari pengelola gym. Cukup tulis key yang mau diganti -- yang tidak ditulis di sini tetap pakai default dari config.py.",
+  "CAPACITY_PER_SLOT": 5,
+  "TURNOVER_MINUTES": 20,
+  "EMPTY_THRESHOLD_RATIO": 0.4
+}

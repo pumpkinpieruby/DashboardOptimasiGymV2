@@ -28,6 +28,10 @@ import statistics
 import time
 from pathlib import Path
 
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # biar gym_scheduler ketemu dari scripts/
+
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -95,7 +99,7 @@ def summarize(records: list) -> dict:
 
 
 def main():
-    df = load_dataset("daily_gym_attendance_workout_data.csv")
+    df = load_dataset("data/daily_gym_attendance_workout_data.csv")
     weights = hourly_weights(df)
 
     all_summaries = {}

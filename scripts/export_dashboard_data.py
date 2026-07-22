@@ -18,7 +18,10 @@ menjalankan ulang skenario yang sama dengan seed yang sama):
 """
 
 import json
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # biar gym_scheduler ketemu dari scripts/
 
 from gym_scheduler import config
 from gym_scheduler.data import load_dataset, dataset_summary, hourly_weights
@@ -64,7 +67,7 @@ def build_scenario_payload(name: str, params: dict, weights):
 
 
 def main():
-    df = load_dataset("daily_gym_attendance_workout_data.csv")
+    df = load_dataset("data/daily_gym_attendance_workout_data.csv")
     weights = hourly_weights(df)
 
     payload = {
